@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#FFFFFF">
+	<RelativeLayout
+		android:id="@+id/todo_infobar"
+		android:layout_width="fill_parent"
+	  	android:layout_height="wrap_content"
+	  	android:layout_alignParentTop="true" android:background="@color/bule">
+	  	<TextView
+	  		android:id="@+id/todo_infotext"
+	  		android:layout_width="wrap_content"
+	  		android:layout_height="wrap_content"
+	  		android:layout_gravity="center_vertical"
+	  		android:textColor="#FFFFFF"
+	  		android:textSize="25dip"/>
+		<FrameLayout
+	  		android:layout_width="wrap_content"
+	  		android:layout_height="wrap_content">
+	  		<Button
+	  			android:id="@+id/todo_sort_datebtn"
+	  			android:layout_width="wrap_content"
+	  			android:layout_height="wrap_content"
+	  			android:layout_marginTop="5dip"
+	  			android:textSize="20dip"
+	  			android:layout_gravity="center_vertical"/>
+	  		<Button
+	  			android:id="@+id/todo_sort_tagbtn"
+	  			android:layout_width="wrap_content"
+	  			android:layout_height="wrap_content"
+	  			android:layout_marginTop="5dip"
+	  			android:textSize="20dip"
+	  			android:layout_gravity="center_vertical"/>
+		</FrameLayout>
+		<Button 
+			android:background="@drawable/addtodo" 
+			android:id="@+id/todo_add" android:layout_alignParentRight="true" android:layout_height="45dip" android:layout_width="45dip"></Button>
+	
+</RelativeLayout>
+	<ViewSwitcher
+		android:id="@+id/todo_expandlist_switcher"
+		android:layout_width="fill_parent"
+	  	android:layout_height="fill_parent"
+	  	android:animationCache="true"
+		android:layout_below="@+id/todo_infobar"
+	  	android:layout_above="@+id/todo_bottombar"/>
+	<RelativeLayout 
+		android:id="@+id/todo_bottombar"
+		android:layout_width="fill_parent"
+	  	android:layout_height="65dip"
+	  	android:layout_alignParentBottom="true"
+	  	android:orientation="horizontal" android:background="@color/bule">
+	  	<Button
+	  		android:id="@+id/todo_sort_categorybtn"
+	  		android:layout_height="55dip" 
+	  		android:layout_width="55dip" 	  		
+	  		android:background="@drawable/display" android:layout_marginLeft="20dip" android:layout_centerVertical="true"/>
+	  	<Button
+	  		android:id="@+id/todo_sort_statebtn"
+	  		android:layout_height="55dip" 
+	  		android:layout_width="55dip" 
+	  		android:background="@drawable/status" android:layout_toRightOf="@+id/todo_sort_categorybtn" android:layout_centerVertical="true" android:layout_marginLeft="20dip"/>
+	  	<Button
+	  		android:id="@+id/todo_sort_sortbtn"
+	  		android:layout_height="55dip" 
+	  		android:layout_width="55dip"   		
+	  		android:background="@drawable/sort" android:layout_toRightOf="@+id/todo_sort_statebtn" android:layout_centerVertical="true" android:layout_marginLeft="20dip"/>
+	  	<Button
+	  		android:layout_width="55dip" 
+	  		android:layout_height="55dip" 
+	  		android:background="@drawable/search" android:id="@+id/todo_sort_searchbtn" android:layout_toRightOf="@+id/todo_sort_sortbtn" android:layout_centerInParent="true" android:layout_marginLeft="20dip"/>
+	  		
+	</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+            android:key="default_toggle"
+            android:defaultValue="true"
+            android:title="@string/title_checkbox_preference"
+            android:summary="@string/summary_checkbox_preference" />
+
+    <EditTextPreference
+            android:key="default_edittext"
+            android:defaultValue="@string/default_value_edittext_preference"
+            android:title="@string/title_edittext_preference"
+            android:summary="@string/summary_edittext_preference"
+            android:dialogTitle="@string/dialog_title_edittext_preference" />
+            
+    <ListPreference
+            android:key="default_list"
+            android:defaultValue="@string/default_value_list_preference"
+            android:title="@string/title_list_preference"
+            android:summary="@string/summary_list_preference"
+            android:entries="@array/entries_list_preference"
+            android:entryValues="@array/entryvalues_list_preference"
+            android:dialogTitle="@string/dialog_title_list_preference" />
+
+	<PreferenceCategory 
+			android:title="@string/category_title_preference">
+		<Preference 
+				android:title="@string/loginname_title_preference" 
+				android:key="loginname_key_preference" 
+				android:persistent="true" android:defaultValue="@string/hello">
+		</Preference>
+		<CheckBoxPreference 
+				android:title="@string/sync_title_preference" 
+				android:defaultValue="false" 
+				android:key="defult_sync">
+		</CheckBoxPreference>	
+	</PreferenceCategory>
+	<PreferenceCategory 
+			android:title="@string/notification_title_preference">
+		<CheckBoxPreference android:title="@string/playringtone_checkbox_preference" android:key="defalut_playringtone" android:defaultValue="true"></CheckBoxPreference>\
+		<RingtonePreference 
+				android:ringtoneType="notification" 
+				android:title="@string/select_ringtone_preference" 
+				android:key="default_ringtone" android:dependency="defalut_playringtone">
+		</RingtonePreference>
+	
+<CheckBoxPreference android:title="@string/vibrate_checkbox_Preference" android:key="defalut_vibrate" android:defaultValue="true"></CheckBoxPreference>
+</PreferenceCategory>
+</PreferenceScreen>

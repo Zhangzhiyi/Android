@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="79px"
+    android:background="@drawable/preference_list_bg_selector"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/textItem"
+        android:layout_width="wrap_content"
+        android:layout_height="79px"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="25px"
+        android:gravity="left|center_vertical"
+        android:text="12121212"
+        android:textColor="#333333"
+        android:textSize="25px"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="40px"
+        android:focusable="false"
+        android:background="@drawable/preference_btn_delete_selector"/>
+
+</RelativeLayout>

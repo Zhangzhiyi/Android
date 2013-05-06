@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<TextView  
+    android:id="@+id/TextView01"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:textSize="18sp" 
+    android:text="@string/hello"
+    />
+<Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/button1" android:text="主线程给其他线程发送消息（1）"></Button>
+<Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/button2" android:text="延迟发送消息"></Button>
+<Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/button3" android:text="取消延迟发送消息"></Button>
+<Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/button4" android:text="Button"></Button>
+<Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/button5" android:text="判断Handler是否有指定what的消息"></Button>
+
+</LinearLayout>

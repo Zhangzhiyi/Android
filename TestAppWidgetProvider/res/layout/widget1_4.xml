@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="100dip" android:background="@drawable/widget_bg_1_4">
+
+<LinearLayout 
+android:id="@+id/LinearLayout01" 
+android:orientation="vertical"
+android:layout_weight="1" 
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent"
+android:paddingLeft="20dip">
+<TextView 
+android:id="@+id/TextView01" 
+android:text="1111111111111"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"
+></TextView>
+ <include layout="@layout/progressbar"/>
+</LinearLayout>
+<LinearLayout 
+android:id="@+id/LinearLayout02" 
+android:layout_weight="2" 
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent"
+android:paddingLeft="10dip">
+<FrameLayout 
+android:id="@+id/FrameLayout01" 
+android:layout_width="75dip"
+android:layout_height="75dip" 
+android:layout_gravity="center">
+<ImageButton 
+android:id="@+id/jifen" 
+android:layout_width="70dip"
+android:layout_height="70dip"
+android:background="@drawable/call_query">
+</ImageButton>
+</FrameLayout>
+
+
+</LinearLayout>
+</LinearLayout>

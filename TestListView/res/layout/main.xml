@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	android:id="@+id/LinearLayout01" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" 
+	>
+    <Button android:text="跳转" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/button1" 
+        android:focusable="false"></Button>
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        
+        <ListView 
+            android:layout_width="fill_parent" 
+          android:layout_height="fill_parent" 
+          android:id="@+id/ListView01"
+          android:fadeScrollbars="false" 
+          android:scrollbars="none"/>
+
+        <LinearLayout
+            android:id="@+id/popupmenu1"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:layout_gravity="top" 
+            android:background="@android:color/darker_gray"
+            android:visibility="gone">
+        </LinearLayout>
+		<LinearLayout
+            android:id="@+id/popupmenu2"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:layout_gravity="bottom"
+            android:background="@android:color/darker_gray"
+            android:visibility="gone" >
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

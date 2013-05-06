@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.et.CustomLeftView.CustomLeftView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/customLinearLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layoutAnimation="@anim/layout_left_to_right_slide" >
+    	<Button
+            android:id="@+id/button1"
+            android:layout_width="145dip"
+            android:layout_height="45dip"
+            android:background="@drawable/btn_selector"
+            android:text="Button"
+            android:textSize="@dimen/fontsize" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="145dip"
+            android:layout_height="45dip"
+            android:background="@drawable/btn_selector"
+            android:text="Button"
+            android:textSize="@dimen/fontsize" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="145dip"
+            android:layout_height="45dip"
+            android:background="@drawable/btn_selector"
+            android:text="Button"
+            android:textSize="@dimen/fontsize" />
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="145dip"
+            android:layout_height="45dip"
+            android:background="@drawable/btn_selector"
+            android:text="Button"
+            android:textSize="@dimen/fontsize" />
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="145dip"
+            android:layout_height="45dip"
+            android:background="@drawable/btn_selector"
+            android:text="Button"
+            android:textSize="@dimen/fontsize" />
+    
+    
+</com.et.CustomLeftView.CustomLeftView>

@@ -1,0 +1,188 @@
+<LinearLayout 
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent" 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+android:orientation="vertical" >
+<LinearLayout 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:layout_weight="1"
+android:padding="5dip" android:orientation="vertical">
+<!-- Sync Contact -->
+<RelativeLayout 
+android:id="@+id/sync_contact_RelativeLayout" 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" android:paddingBottom="5dip">
+<ImageView 
+android:id="@+id/contact_bg"
+android:layout_width="fill_parent" 
+android:layout_height="70dip" 
+android:src="@drawable/category_selector" 
+android:clickable="true" android:focusable="true">
+</ImageView>
+<ImageView 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:src="@drawable/sync_contact" 
+android:id="@+id/sync_contact" 
+android:layout_centerVertical="true" 
+android:layout_marginLeft="10dip">
+</ImageView>
+<TextView 
+android:text="Contact" 
+android:id="@+id/sync_contact_title" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_toRightOf="@+id/sync_contact" 
+android:typeface="sans" android:layout_alignTop="@+id/sync_contact" 
+android:layout_marginTop="10dip" android:layout_marginLeft="5dip" 
+android:textSize="25sp">
+</TextView>
+<TextView 
+android:text="time" 
+android:id="@+id/sync_contact_time" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_below="@+id/sync_contact_title" android:layout_toRightOf="@+id/sync_contact" android:layout_marginLeft="10dip">
+</TextView>
+<ImageView 
+android:layout_width="wrap_content" 
+android:id="@+id/sync_contact_progress" 
+android:layout_height="wrap_content" 
+android:src="@drawable/icon_progress_sync_1" 
+android:layout_alignParentRight="true" 
+android:layout_centerVertical="true" 
+android:layout_marginRight="10dip">
+</ImageView>
+</RelativeLayout>
+
+<!-- Sync Todo -->
+<RelativeLayout 
+android:id="@+id/sync_todo_RelativeLayout" 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" android:paddingBottom="5dip">
+<ImageView 
+android:id="@+id/todo_bg"
+android:layout_width="fill_parent" 
+android:layout_height="70dip" 
+android:src="@drawable/category_selector" 
+android:clickable="true" android:focusable="true">
+</ImageView>
+<ImageView 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:id="@+id/sync_todo" 
+android:layout_centerVertical="true" 
+android:layout_marginLeft="10dip" android:src="@drawable/sync_todo">
+</ImageView>
+<TextView 
+android:text="Todo" 
+android:id="@+id/sync_todo_title" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_toRightOf="@+id/sync_todo" 
+android:typeface="sans" android:layout_alignTop="@+id/sync_todo" 
+android:layout_marginTop="10dip" android:layout_marginLeft="5dip" 
+android:textSize="25sp">
+</TextView>
+<TextView 
+android:text="time" 
+android:id="@+id/sync_todo_time" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_below="@+id/sync_todo_title" 
+android:layout_toRightOf="@+id/sync_todo" android:layout_marginLeft="10dip">
+</TextView>
+<ImageView 
+android:layout_width="wrap_content" 
+android:id="@+id/sync_todo_progress" 
+android:layout_height="wrap_content" 
+android:src="@drawable/icon_progress_sync_1" 
+android:layout_alignParentRight="true" 
+android:layout_centerVertical="true" 
+android:layout_marginRight="10dip">
+</ImageView>
+</RelativeLayout>
+
+<!-- Sync note -->
+<RelativeLayout 
+android:id="@+id/sync_note_RelativeLayout" 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" android:paddingBottom="5dip">
+<ImageView 
+android:id="@+id/note_bg"
+android:layout_width="fill_parent" 
+android:layout_height="70dip" 
+android:src="@drawable/category_selector" 
+android:clickable="true" android:focusable="true">
+</ImageView>
+<ImageView 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:id="@+id/sync_note" 
+android:layout_centerVertical="true" 
+android:layout_marginLeft="10dip" android:src="@drawable/sync_note">
+</ImageView>
+<TextView 
+android:text="Note" 
+android:id="@+id/sync_note_title" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_toRightOf="@+id/sync_note" 
+android:typeface="sans" android:layout_alignTop="@+id/sync_note" 
+android:layout_marginTop="10dip" android:layout_marginLeft="5dip" 
+android:textSize="25sp">
+</TextView>
+<TextView 
+android:text="time" 
+android:id="@+id/sync_note_time" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_below="@+id/sync_note_title" 
+android:layout_toRightOf="@+id/sync_note" android:layout_marginLeft="10dip">
+</TextView>
+<ImageView 
+android:layout_width="wrap_content" 
+android:id="@+id/sync_note_progress" 
+android:layout_height="wrap_content" 
+android:src="@drawable/icon_progress_sync_1" 
+android:layout_alignParentRight="true" 
+android:layout_centerVertical="true" 
+android:layout_marginRight="10dip">
+</ImageView>
+</RelativeLayout>
+
+</LinearLayout>
+
+<LinearLayout 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:background="@color/gray" 
+android:gravity="center" 
+android:layout_weight="0" android:padding="5dip">
+<Button 
+android:text="Sync All" 
+android:id="@+id/sync_all" 
+android:layout_width="150dip" 
+android:layout_height="wrap_content" android:textSize="18sp"></Button>
+</LinearLayout>
+<Button 
+android:text="connect" 
+android:id="@+id/connect"
+ android:layout_width="fill_parent" 
+ android:layout_height="wrap_content">
+ </Button>
+ <Button 
+android:text="sync" 
+android:id="@+id/sync"
+ android:layout_width="fill_parent" 
+ android:layout_height="wrap_content">
+ </Button>
+  <Button 
+android:text="disconnect" 
+android:id="@+id/disconnect"
+ android:layout_width="fill_parent" 
+ android:layout_height="wrap_content">
+ </Button>
+
+</LinearLayout>

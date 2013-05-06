@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="demo.camera"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".MenuActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+		<activity
+			android:name=".PhotoManager" />
+		<activity
+			android:name=".MainActivity" />
+		<activity
+			android:name=".MyCamera" />	
+		<activity
+			android:name=".PhotoProcess" />	
+		<activity
+			android:name=".AudioDemo" />	
+			
+		<activity
+			android:name=".BackgroundAudioDemo" />	
+			
+		<activity
+			android:name=".InternetAudioDemo" />	
+			
+		<activity
+			android:name=".AudioRecordDemo" />
+			
+		<activity
+			android:name=".MyAudioRecord" />	
+			
+		<activity
+			android:name=".MyAudioRecord2" />	
+			
+		<activity
+			android:name=".VideoDemo" />
+			
+		<activity
+			android:name=".VideoViewDemo" />
+			
+		<activity
+			android:name=".VideoSurfaceDemo" />	
+			
+		<activity
+			android:name=".AdvancedVideoDemo" />	
+			
+		<activity
+			android:name=".InternetVideoDemo" />	
+			
+		<activity
+			android:name=".VideoCaptureDemo" />																																
+		
+		<service 
+			android:name=".AudioService" />											
+    </application>
+   
+    <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-feature android:name="android.hardware.camera" />
+</manifest> 

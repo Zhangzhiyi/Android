@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TestUI!</string>
+    <string name="app_name">TestUI</string>
+<drawable name="red">#7f00</drawable>
+</resources>

@@ -1,0 +1,107 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (classFileParser.cpp:3161), pid=4644, tid=3564
+#  Error: ShouldNotReachHere()
+#
+# JRE version: 6.0_21-b07
+# Java VM: Java HotSpot(TM) Client VM (17.0-b17 mixed mode windows-x86 )
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x018b9400):  JavaThread "Unknown thread" [_thread_in_vm, id=3564, stack(0x00350000,0x003a0000)]
+
+Stack: [0x00350000,0x003a0000],  sp=0x0039f880,  free space=13e0039f890k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x1fd090]
+V  [jvm.dll+0xa47c9]
+V  [jvm.dll+0x75f01]
+V  [jvm.dll+0x775a4]
+V  [jvm.dll+0x1cbcb5]
+V  [jvm.dll+0x1cc3ed]
+V  [jvm.dll+0x1cc7a5]
+V  [jvm.dll+0x1cc7eb]
+V  [jvm.dll+0x1cc912]
+V  [jvm.dll+0x1cc98a]
+V  [jvm.dll+0x1cce3d]
+V  [jvm.dll+0x1cd252]
+V  [jvm.dll+0x1eceb3]
+V  [jvm.dll+0x1ed28c]
+V  [jvm.dll+0xdb721]
+V  [jvm.dll+0x1e6618]
+V  [jvm.dll+0x1065d0]
+C  [javaw.exe+0x1657]
+C  [javaw.exe+0x1e2c]
+C  [javaw.exe+0x8614]
+C  [kernel32.dll+0x51194]
+C  [ntdll.dll+0x5b3f5]
+C  [ntdll.dll+0x5b3c8]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x018b9400 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=3564, stack(0x00350000,0x003a0000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Dynamic libraries:
+0x00400000 - 0x00424000 	D:\Java\jre6\bin\javaw.exe
+0x76dd0000 - 0x76f0c000 	C:\Windows\SYSTEM32\ntdll.dll
+0x76af0000 - 0x76bc4000 	C:\Windows\system32\kernel32.dll
+0x75110000 - 0x7515a000 	C:\Windows\system32\KERNELBASE.dll
+0x759c0000 - 0x75a60000 	C:\Windows\system32\ADVAPI32.dll
+0x75a60000 - 0x75b0c000 	C:\Windows\system32\msvcrt.dll
+0x75b20000 - 0x75b39000 	C:\Windows\SYSTEM32\sechost.dll
+0x75b40000 - 0x75be1000 	C:\Windows\system32\RPCRT4.dll
+0x75620000 - 0x756e9000 	C:\Windows\system32\USER32.dll
+0x76f50000 - 0x76f9e000 	C:\Windows\system32\GDI32.dll
+0x75b10000 - 0x75b1a000 	C:\Windows\system32\LPK.dll
+0x76bd0000 - 0x76c6d000 	C:\Windows\system32\USP10.dll
+0x755f0000 - 0x7560f000 	C:\Windows\system32\IMM32.DLL
+0x75dc0000 - 0x75e8c000 	C:\Windows\system32\MSCTF.dll
+0x7c340000 - 0x7c396000 	D:\Java\jre6\bin\msvcr71.dll
+0x6d800000 - 0x6daa7000 	D:\Java\jre6\bin\client\jvm.dll
+0x6fc30000 - 0x6fc62000 	C:\Windows\system32\WINMM.dll
+0x74e50000 - 0x74e9b000 	C:\Windows\system32\apphelp.dll
+0x6d7b0000 - 0x6d7bc000 	D:\Java\jre6\bin\verify.dll
+0x6d330000 - 0x6d34f000 	D:\Java\jre6\bin\java.dll
+0x6d290000 - 0x6d298000 	D:\Java\jre6\bin\hpi.dll
+0x75610000 - 0x75615000 	C:\Windows\system32\PSAPI.DLL
+0x6d7f0000 - 0x6d7ff000 	D:\Java\jre6\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=GBK -Xbootclasspath:D:\android-sdk-windows-1.5_r3\platforms\android-2.1\android.jar 
+java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 52537 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -classNames com.mcs.todo.db.ContentManagerTest
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\Java\jdk1.6.0_21
+PATH=D:/Java/jre6/bin/client;D:/Java/jre6/bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;D:\cassandra\apache-cassandra\bin;D:\Java\jdk1.6.0_21\bin;D:\Microsoft Visual Studio\Common\Tools\WinNT;D:\Microsoft Visual Studio\Common\MSDev98\Bin;D:\Microsoft Visual Studio\Common\Tools;D:\Microsoft Visual Studio\VC98\bin
+USERNAME=ET
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 23 Stepping 6, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 Build 7600 
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 23 stepping 6, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1
+
+Memory: 4k page, physical 2096376k(652708k free), swap 4192752k(1725816k free)
+
+vm_info: Java HotSpot(TM) Client VM (17.0-b17) for windows-x86 JRE (1.6.0_21-b07), built on Jul 17 2010 01:10:15 by "java_re" with MS VC++ 7.1 (VS2003)
+
+time: Fri Oct 08 15:28:37 2010
+elapsed time: 0 seconds
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="KApplicationName">CSwipe Demo</string>
+    <string name="KUrl">http://AndroidDesignBook.com</string>
+
+    <string name="KMsgErrLoadingGestures">Unable to load gestures.</string>
+
+    <string name="KExploreShort">Explore more design patterns and demos at AndroidDesignBook.com</string>
+    <string name="KExploreLong"><![CDATA[<b><font color=\'#000000\'>Explore 70+ more design patterns and demos, new book and FREE Agile Android Design Masterclass at</font> <font color=\'#AD313B\'><u>AndroidDesignPatterns.com</u></font></b>]]></string>
+
+</resources>

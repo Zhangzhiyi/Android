@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, GestureTest</string>
+	<string name="app_name">Gesture Test</string>
+	<string name="text">On Android, theres more than one way to
+		intercept the events from a users interaction with your application.
+		When considering events within your user interface, the approach is to
+		</string>
+</resources>

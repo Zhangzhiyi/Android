@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView 
+	android:id="@+id/process" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    />
+<Button 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:text="start remote service" 
+android:id="@+id/start_service">
+</Button>
+<Button 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:text="stop remote service" 
+android:id="@+id/stop_service">
+</Button>
+<Button 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:text="bind AIDL service" 
+android:id="@+id/bind_aidl">
+</Button>
+<Button 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:text="unbind AIDL service" 
+android:id="@+id/unbind_aidl">
+</Button>
+<Button 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:id="@+id/start_aidl" 
+android:text="start AIDL service">
+</Button>
+<TextView 
+android:text="AIDL text" 
+android:id="@+id/aidl_text" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</TextView>
+
+<Button 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:text="bind remotecallback service" 
+android:id="@+id/bind_remotecallback">
+</Button>
+<Button 
+android:text="unbind remotecallback service" 
+android:id="@+id/unbind_remotecallback" 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent">
+</Button>
+<TextView 
+android:text="remotecallback text" 
+android:id="@+id/text_remotecallback" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</TextView>
+<TextView 
+android:text="threadback:unfinish" 
+android:id="@+id/text_threadback" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</TextView>
+</LinearLayout>

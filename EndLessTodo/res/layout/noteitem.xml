@@ -1,0 +1,38 @@
+<LinearLayout
+ android:id="@+id/LinearLayout08" 
+ android:layout_width="fill_parent" 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+ android:orientation="horizontal" 
+ android:layout_height="wrap_content" >
+ <ImageView android:id="@+id/ImageView01" 
+ android:layout_width="wrap_content" 
+ android:layout_height="wrap_content" 
+ android:src="@drawable/blue_note" android:layout_gravity="center_vertical">
+ </ImageView>
+ <TextView 
+ android:layout_height="wrap_content"
+ android:id="@+id/note_title" 
+ android:singleLine="true" 
+ android:marqueeRepeatLimit="marquee_forever" 
+ android:ellipsize="marquee" 
+ android:textSize="18sp" 
+ android:layout_gravity="center_vertical" android:layout_width="210dip">
+ </TextView>
+
+<FrameLayout 
+android:id="@+id/FrameLayout01" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+<CheckBox 
+android:id="@+id/CheckBox"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:visibility="invisible" android:layout_gravity="center" >
+</CheckBox>
+<TextView 
+android:id="@+id/crt_time" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_gravity="center"></TextView>
+</FrameLayout>
+</LinearLayout>

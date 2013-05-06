@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" 
+  android:orientation="vertical" 
+  android:gravity="center_horizontal">
+  <LinearLayout
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content" 
+  android:gravity="center_horizontal">
+	<Button
+		android:id="@+id/btn_select" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text="选择图片" 
+		android:layout_weight="0.5"
+		/>
+	<Button
+		android:id="@+id/btn_select2" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text="选择第二张图片"
+		android:layout_weight="0.5"
+		/>		
+  </LinearLayout>
+	<ImageView
+		android:id="@+id/img_src" 
+		android:layout_width="240dp" 
+		android:layout_height="180dp" 
+		/>
+		
+	<ImageView
+		android:id="@+id/img_dst" 
+		android:layout_width="240dp" 
+		android:layout_height="180dp" 
+		/>		
+	
+</LinearLayout>

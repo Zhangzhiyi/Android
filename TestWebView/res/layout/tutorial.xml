@@ -1,0 +1,58 @@
+
+<FrameLayout 
+android:id="@+id/tutor_Layout" 
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent" 
+xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:id="@+id/linearLayout1" 
+	android:layout_height="fill_parent" 
+	android:orientation="vertical">
+		<ViewFlipper
+		android:id="@+id/webview_filpper" 
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent" 
+		android:layout_weight="1"
+		>
+			
+		</ViewFlipper>	
+		
+		<RelativeLayout
+		android:id="@+id/tutor_bottom_rel"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:layout_gravity="bottom"
+		>
+		
+			<ImageView
+			android:id="@+id/LeftPage"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:src="@drawable/left_unable" 
+			android:layout_alignParentLeft="true"
+			/>
+			
+			<ImageView
+			android:id="@+id/RightPage"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:src="@drawable/right_enable" 
+			android:layout_alignParentRight="true"
+			/>
+			
+			<LinearLayout
+			android:id="@+id/tutor_bottom" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:orientation="horizontal" 
+			android:layout_toRightOf="@id/LeftPage"
+			android:layout_toLeftOf="@id/RightPage"
+			>
+			</LinearLayout>
+	
+		</RelativeLayout>
+	
+	</LinearLayout>
+	
+</FrameLayout>

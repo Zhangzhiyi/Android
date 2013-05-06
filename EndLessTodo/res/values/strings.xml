@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Main!</string>
+    <string name="app_name">EndlessTodo</string>
+<string name="search">搜索待办</string>
+<string name="search_hint">搜索待办</string>
+<string name="searchempty">搜索记录为空，你可能还没有创建待办或者尝试改变关键字再次搜索 </string>
+<string name="noteempty">你还没有创建备忘,赶快去创建来记录的你想法和创意吧！</string>
+
+
+<string name="title_checkbox_preference">Checkbox preference</string>
+<string name="summary_checkbox_preference">This is a checkbox</string>
+<string name="default_value_edittext_preference">Default value</string>
+<string name="title_edittext_preference">Edit text preference</string>
+<string name="summary_edittext_preference">An example that uses an edit text dialog</string>
+<string name="dialog_title_edittext_preference">Enter your favorite animal</string>
+<string name="title_list_preference">List preference</string>
+<string name="summary_list_preference">An example that uses a list dialog</string>
+<string name="dialog_title_list_preference">Choose one</string>
+<string name="default_value_list_preference">beta</string>
+<string name="category_title_preference">同步</string>
+<string name="loginname_title_preference">用户名</string>
+<string name="sync_title_preference">自动同步</string>
+<string name="notification_title_preference">通知</string>
+<string name="select_ringtone_preference">选择铃声</string>
+
+<string name="playringtone_checkbox_preference">播放通知音</string>
+<string name="vibrate_checkbox_Preference">震动</string>
+</resources>

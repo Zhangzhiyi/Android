@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.osf.demo.cswipe.widget.CSwipe xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:cswipe="http://schemas.android.com/apk/res/com.osf.demo.cswipe"
+                                   android:id="@+id/cswipe"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentRight="true"
+                                   android:layout_centerVertical="true"
+                                   cswipe:outerArcRadius="100dp"
+                                   cswipe:innerArcRadius="35dp"
+                                   cswipe:anchor="right" />

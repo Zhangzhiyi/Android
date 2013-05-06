@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.et.Activity"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".MainActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<service android:name="com.et.service.RemoteService"
+				 android:process=":remoteservice">
+				 <intent-filter>
+				 	<!-- 这个action是直接调用远程服务的 -->
+				 	<action android:name="com.et.service.REMOTE_SERVICE"></action>
+				 	<!-- 下面action是直接调用远程AIDL的 -->
+				 	<action android:name="com.et.service.IMyService"></action>
+				
+				 </intent-filter>
+		 </service>
+		 <service android:name="com.et.service.RemoteCallbackService"
+		 		  android:process=":remotecallbackservice">
+		 		  <intent-filter>
+				 	<!-- 这个action是直接调用远程服务的 -->
+				 	<action android:name="com.et.service.REMOTECALLBACK_SERVICE"></action>
+				 	<!-- 下面2个action是直接调用远程AIDL的 -->
+				 	<action android:name="com.et.service.IRemoteService"></action>
+				 	<action android:name="com.et.service.IRemoteServiceCallback"></action>
+				 </intent-filter>	
+		 </service>
+		 
+		 <activity android:name="TestActivity"></activity>
+    </application>
+
+
+</manifest> 

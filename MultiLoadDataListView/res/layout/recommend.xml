@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="wrap_content" 
+  android:layout_width="fill_parent" 
+  android:orientation="vertical">
+<LinearLayout 
+android:id="@+id/LinearLayout01" 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:orientation="horizontal">
+<EditText 
+android:id="@+id/EditText01" 
+android:layout_height="wrap_content" 
+android:hint="添加好友号码" android:layout_width="200dip">
+</EditText>
+<Button 
+android:text="添加" 
+android:id="@+id/add" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/sendbutton" android:text="推荐"></Button>
+</LinearLayout>
+<LinearLayout 
+android:id="@+id/LinearLayout03" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" android:orientation="vertical">
+</LinearLayout>
+
+<LinearLayout 
+android:id="@+id/LinearLayout02" 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:orientation="horizontal">
+<Button 
+android:text="全选" 
+android:id="@+id/all" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<Button 
+android:text="反选" 
+android:id="@+id/inverse" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+</LinearLayout>
+<ListView 
+android:id="@+id/ListView01" 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent">
+</ListView>
+</LinearLayout>

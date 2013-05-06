@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="bottom"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1" 
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="145dip"
+            android:layout_height="45dip"
+            android:background="@drawable/btn_selector"
+            android:text="Button" />
+
+     <LinearLayout
+         android:id="@+id/linearLayout2"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" >
+         <Button
+             android:id="@+id/backBtn"
+             android:layout_width="50dip"
+             android:layout_height="55dip"
+             android:background="@drawable/facekeyboard_func_bg"
+             android:text="返回" />
+
+    <HorizontalScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/facekeyboard1_background"
+    android:layout_weight="1"
+    android:id="@+id/facekeyboard"
+    android:scrollbars="none"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical" 
+        android:id="@+id/facekeyboard"
+        >
+		<ImageButton
+            android:id="@+id/facekeyboard1_recently"
+            style="@style/facekeyboard_btn"
+            android:src="@drawable/facekeyboard1_recently" 
+            android:background="@drawable/facekeyboard_left_bg"/>
+		<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+		<ImageButton
+            android:id="@+id/facekeyboard1_android"
+            style="@style/facekeyboard_btn"
+            android:src="@drawable/facekeyboard1_android" 
+            android:background="@drawable/facekeyboard_middle_bg"/>
+
+		<!-- android表情分类 -->
+		<LinearLayout
+		    android:id="@+id/facekeyboard1_android_linearLayout"
+		    android:layout_width="wrap_content"
+		    android:layout_height="match_parent" 
+		    android:gravity="center_vertical" 
+		    android:visibility="gone">
+		    <ImageButton
+            android:id="@+id/android_imagebutton1"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_android" 
+            android:background="@drawable/facekeyboard_all_bg"/>
+		</LinearLayout>
+		
+		<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+		<ImageButton
+            android:id="@+id/facekeyboard1_emoji"
+            style="@style/facekeyboard_btn"
+            android:src="@drawable/facekeyboard1_emoji" 
+            android:background="@drawable/facekeyboard_middle_bg"/>
+		<!-- emoji表情分类 -->
+		<LinearLayout
+		    android:id="@+id/facekeyboard1_emoji_linearLayout"
+		    android:layout_width="wrap_content"
+		    android:layout_height="match_parent" 
+		    android:background="@drawable/facekeyboard2_background"
+		    android:gravity="center_vertical"
+		    android:visibility="gone" >
+		    <ImageButton
+            android:id="@+id/emoji_imageButton1"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_emoji1" 
+            android:background="@drawable/facekeyboard_left_bg"/>
+			<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+		    <ImageButton
+            android:id="@+id/emoji_imageButton2"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_emoji2" 
+            android:background="@drawable/facekeyboard_middle_bg"/>
+		    <ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+		    <ImageButton
+            android:id="@+id/emoji_imageButton3"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_emoji3" 
+            android:background="@drawable/facekeyboard_middle_bg"/>
+		    <ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+		    <ImageButton
+            android:id="@+id/emoji_imageButton4"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_emoji4" 
+            android:background="@drawable/facekeyboard_right_bg"/>
+			
+		</LinearLayout>
+		<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+		<ImageButton
+            android:id="@+id/facekeyboard1_korean"
+            style="@style/facekeyboard_btn"
+            android:src="@drawable/facekeyboard1_korean" 
+            android:background="@drawable/facekeyboard_middle_bg"/>
+
+		<!-- 韩文表情分类 -->
+		<LinearLayout
+		    android:id="@+id/facekeyboard1_korean_linearLayout"
+		    android:layout_width="wrap_content"
+		    android:layout_height="match_parent" 
+		    android:background="@drawable/facekeyboard2_background"
+		    android:gravity="center_vertical"
+		    android:visibility="gone" >
+		    <ImageButton
+            android:id="@+id/korean_imageButton1"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_korean1" 
+            android:background="@drawable/facekeyboard_left_bg"/>
+			<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+		    <ImageButton
+            android:id="@+id/korean_imageButton2"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_korean2" 
+            android:background="@drawable/facekeyboard_middle_bg"/>
+			<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+			<ImageButton
+            android:id="@+id/korean_imageButton3"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_korean3" 
+            android:background="@drawable/facekeyboard_right_bg"/>
+		</LinearLayout>
+		
+		<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+		<ImageButton
+            android:id="@+id/facekeyboard1_face"
+            style="@style/facekeyboard_btn"
+            android:src="@drawable/facekeyboard1_face" 
+            android:background="@drawable/facekeyboard_right_bg"/>
+
+		<!-- 颜文字表情分类 -->
+		<LinearLayout
+		    android:id="@+id/facekeyboard1_face_linearLayout"
+		    android:layout_width="wrap_content"
+		    android:layout_height="match_parent" 
+		    android:background="@drawable/facekeyboard2_background"
+		    android:gravity="center_vertical"
+		    android:visibility="gone" >
+		    <ImageButton
+            android:id="@+id/face_imageButton1"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_face1" 
+            android:background="@drawable/facekeyboard_left_bg"/>
+			<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+			<ImageButton
+            android:id="@+id/face_imageButton2"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_face2" 
+            android:background="@drawable/facekeyboard_middle_bg"/>
+			<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+			<ImageButton
+            android:id="@+id/face_imageButton3"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_face3" 
+            android:background="@drawable/facekeyboard_middle_bg"/>
+			<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/facekeyboard_splitline" />
+			<ImageButton
+            android:id="@+id/face_imageButton4"
+            style="@style/facekeyboard2_btn"
+            android:src="@drawable/facekeyboard2_face4" 
+            android:background="@drawable/facekeyboard_right_bg"/>
+		</LinearLayout>
+    </LinearLayout>
+	</HorizontalScrollView>
+     <Button
+         android:id="@+id/button2"
+         android:layout_width="50dip"
+                android:layout_height="55dip"
+         android:background="@drawable/facekeyboard_func_bg"
+         android:text="删除" />
+    
+    </LinearLayout>
+	
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+</LinearLayout>

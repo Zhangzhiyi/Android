@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mcs.todo"
+    android:versionCode="1"
+    android:versionName="1.0">
+   	<application android:icon="@drawable/icon" android:label="@string/app_name">
+    	<activity android:name=".Login"
+        		  android:label="MCS 助手">
+        	<intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> 
+		<activity android:name=".Main"
+                  android:label="今日待办">
+            <intent-filter>
+              	<action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+             <!-- Receives the search request. -->
+            <intent-filter> 
+                <action android:name="android.intent.action.SEARCH" />
+                <!-- No category needed, because the Intent will specify this class component-->
+            </intent-filter>
+            <!-- Points to searchable meta data. -->
+            <meta-data android:name="android.app.searchable"
+                       android:resource="@xml/searchable" />
+        </activity>  
+        <activity android:name=".New"
+                  android:label="新建待办">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Edit"
+                  android:label="编辑待办">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Month"
+                  android:label="月视图">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--             搜索                                     -->
+        <activity android:name=".SearchActivity"
+        		  android:theme="@android:style/Theme.Light" >
+			
+	    </activity> 
+	    <!--            备忘                                     --> 
+	    <activity android:name="NoteActivity"
+	    		  android:theme="@android:style/Theme.Light"></activity> 
+	    <activity android:name="NoteEdit"></activity>
+        
+        <activity android:name="SyncActivity" 
+        		  android:theme="@android:style/Theme.Light"></activity> 
+        
+        <!--        设置        -->
+        <activity android:name="MCSPreferences"
+        	      android:theme="@android:style/Theme.Light"></activity>
+        <!-- Widget -->
+        <receiver android:name=".widget.WidgetProvider" >
+    		<intent-filter>
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    		</intent-filter>
+    		<intent-filter>
+    			<action android:name="com.mcs.todo.widget.next" />
+        		<data android:scheme="mcs" />
+    		</intent-filter>
+    		<meta-data android:name="android.appwidget.provider"
+               		   android:resource="@xml/widgetinfo" />
+		</receiver>
+		<activity android:name="com.mcs.todo.widget.WidgetConf"
+				  android:theme="@android:style/Theme.Dialog"  
+                  android:label="配置Widget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        
+		<!-- ContentProvider --> 
+       <provider         	
+           	android:name="com.mcs.todo.db.MCSProvider"
+        	android:authorities="com.mcs.todo"
+    	/> 
+    	
+    	<!-- Service -->
+    	<service android:name="com.mcs.client.android.service.MCSService" 
+    			 android:process=":mcsservice">
+            <intent-filter>
+                <!-- 在这里加入要提供的服务名称 -->
+                <action android:name="com.mcs.todo.service.WidgetUpdateService" />
+                <!-- 这个action允许我们用这个action来启动，停止service -->
+                <action android:name="com.mcs.todo.MCS_SERVICE" />
+                <action android:name="com.mcs.todo.alertservice"/>
+                <action android:name="com.mcs.client.android.service.IMCSConnect" />
+       			<action android:name="com.mcs.client.android.service.IMCSSync" />
+       			<action android:name="com.mcs.client.android.service.IRemoteService"/>
+				<action android:name="com.mcs.client.android.service.IRemoteServiceCallback"/>
+				<action android:name="com.mcs.client.android.service.IMCSTranValue"/>
+            </intent-filter>
+        </service>
+        <service android:name=".widget.WidgetProvider$UpdateService" />
+    </application>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>	
+
+</manifest> 

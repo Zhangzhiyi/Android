@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <declare-styleable name="ImageOnlyButton">
+        <attr name="resourceNotFocused"  format="reference"/>
+        <attr name="resourceFocused"  format="reference"/>
+        <attr name="resourcePressed" format="reference"/>
+    </declare-styleable>
+    
+     <declare-styleable name="TextOnlyButton">
+        <attr name="textColorNotFocused" format="color"/>
+        <attr name="textColorFocused" format="color"/>
+        <attr name="textColorPressed" format="color"/>
+        
+    </declare-styleable> 
+</resources>

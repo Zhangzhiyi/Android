@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:stretchColumns="1"
+>
+	<TableRow>
+		<TextView
+		    android:padding="4dip"
+		    android:layout_gravity="center_vertical|right"
+		    android:textStyle="bold"
+		    android:text="voltage:"
+		/>
+		<SeekBar  
+		    android:id="@+id/seek_bar0"
+		    android:padding="4dip"/>
+	</TableRow>
+	<TableRow>
+		<TextView
+		    android:padding="4dip"
+		    android:layout_gravity="center_vertical|right"
+		    android:textStyle="bold"
+		    android:text="pressure:"
+		/>
+		<SeekBar  
+		    android:id="@+id/seek_bar1"
+		    android:padding="4dip"
+		/>
+	</TableRow>
+	<TableRow>
+		<TextView
+		    android:padding="4dip"
+		    android:layout_gravity="center_vertical|right"
+		    android:textStyle="bold"
+		    android:text="temperature:"
+		/>
+		<SeekBar  
+		    android:id="@+id/seek_bar2"
+		    android:padding="4dip"
+		/>
+	</TableRow>
+
+	<LinearLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+
+		<SeekBar
+		    android:layout_width="250dp"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="20dp"
+		    android:maxHeight="6dp"
+		    android:minHeight="6dp" 
+		    android:paddingLeft="20dp"
+		    android:paddingRight="20dp"
+		    android:progressDrawable="@drawable/progress_horizontal_holo_dark"
+		    android:thumb="@drawable/preference_volume_thumb" />
+
+		<SeekBar
+		    android:id="@+id/seekBar1"
+		    android:layout_width="250dp"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="20dp"
+		    android:maxHeight="6dp"
+		    android:minHeight="6dp" 
+		    android:paddingLeft="20dp"
+		    android:paddingRight="20dp"
+		    android:max="100"
+		    android:progress="100"
+		    android:thumb="@drawable/preference_volume_thumb"
+		    android:progressDrawable="@drawable/progress_horizontal"/>
+
+	</LinearLayout>
+
+</TableLayout>

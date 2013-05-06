@@ -1,0 +1,28 @@
+<LinearLayout
+ android:id="@+id/categorylinearlayout" 
+ android:layout_width="fill_parent" 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+ android:layout_height="wrap_content" 
+ android:orientation="horizontal" android:paddingRight="5dip" android:background="@drawable/category_selector">
+ <ImageView android:id="@+id/ImageView01" 
+ android:layout_width="wrap_content" 
+ android:layout_height="wrap_content" 
+ android:src="@drawable/blue_notecategory" android:layout_gravity="center_vertical">
+ </ImageView>
+ <TextView 
+ android:layout_height="wrap_content" 
+ android:id="@+id/category_title" 
+ android:singleLine="true" 
+ android:marqueeRepeatLimit="marquee_forever" 
+ android:ellipsize="marquee" 
+ android:layout_width="210dip" 
+ android:textSize="18sp" 
+ android:textStyle="bold" 
+ android:layout_gravity="center_vertical">
+ </TextView>
+<CheckBox 
+android:id="@+id/CheckBox"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+ android:visibility="invisible" android:layout_gravity="right|center_vertical" ></CheckBox>
+</LinearLayout>

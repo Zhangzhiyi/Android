@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TabHost android:layout_width="fill_parent"
+	android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@android:id/tabhost"
+	android:layout_alignParentBottom="true"
+	>
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:orientation="vertical" android:layout_height="fill_parent"
+		android:layout_width="fill_parent">
+		<Button
+			    android:id="@+id/button1"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="Button" />
+		<!-- 注意这个FrameLayou一定要用系统id，用来显示内容 -->		
+		<FrameLayout android:id="@android:id/tabcontent"
+			android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1">
+
+			
+
+		</FrameLayout>
+		<!-- 将TabWidget放在现实内容的FrameLayout下面就可以设置选项卡放在屏幕下面 -->
+		<!-- TabWidget 理解： 
+			1. TabWidget 为 horizontal 的 LinearLayout 
+			2. 且 其包含的标签又是一个RelativeLayout 
+			3. 每个标签RelativeLayout 里面包含2个View: TextView ImageView
+		-->
+		<TabWidget android:id="@android:id/tabs"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:visibility="gone"
+		>
+		</TabWidget>
+		<!--将TabWidget可视性设为"gone",加入以下布局-->
+		<RelativeLayout 
+		android:id="@+id/todo_bottombar"
+		android:layout_width="fill_parent"
+	  	android:layout_height="65dip"
+	  	android:layout_alignParentBottom="true"
+	  	android:orientation="horizontal" android:background="@color/blue">
+	  	<Button
+	  		android:id="@+id/todo_sort_categorybtn"
+	  		android:layout_height="55dip" 
+	  		android:layout_width="55dip" 	  		
+	  		android:background="@drawable/bule_display" 
+	  		android:layout_marginLeft="20dip" 
+	  		android:layout_centerVertical="true"/>
+	  	<Button
+	  		android:id="@+id/todo_sort_statebtn"
+	  		android:layout_height="55dip" 
+	  		android:layout_width="55dip" 
+	  		android:background="@drawable/bule_status" 
+	  		android:layout_toRightOf="@+id/todo_sort_categorybtn" 
+	  		android:layout_centerVertical="true" 
+	  		android:layout_marginLeft="20dip"/>
+	  	<Button
+	  		android:id="@+id/todo_sort_sortbtn"
+	  		android:layout_height="55dip" 
+	  		android:layout_width="55dip"   		
+	  		android:background="@drawable/bule_sort" 
+	  		android:layout_toRightOf="@+id/todo_sort_statebtn" 
+	  		android:layout_centerVertical="true" 
+	  		android:layout_marginLeft="20dip"/>
+	  	<Button
+	  		android:layout_width="55dip" 
+	  		android:layout_height="55dip" 
+	  		android:background="@drawable/bule_search" 
+	  		android:id="@+id/todo_sort_searchbtn" 
+	  		android:layout_toRightOf="@+id/todo_sort_sortbtn" 
+	  		android:layout_centerInParent="true" 
+	  		android:layout_marginLeft="20dip"/>
+	  		
+	</RelativeLayout>
+	</LinearLayout>
+</TabHost>

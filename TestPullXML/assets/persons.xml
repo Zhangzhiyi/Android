@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+	<person id="23">
+		<name>zhangsan</name>
+		<age>25</age>
+		<message>market://details?id=com.gau.go.launcherex&amp;referrer=utm_source%3DGokeyboard_Notice%26utm_medium%3DHyperlink%26utm_term%3DGO%26utm_content%3Dtextlink%26utm_campaign%3DGokeyboard_Notice</message>
+		<message1><![CDATA[if salary <; 1000 then]]></message1>
+	</person>
+	<person id="20">
+		<name>lisi</name>
+		<age>28</age>
+		<message>if salary &lt; 1000 then</message>
+		<message1><![CDATA[if salary <; 1000 then]]></message1>
+	</person>
+</persons>

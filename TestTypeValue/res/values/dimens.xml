@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="dip">1.4dip</dimen>
+	<dimen name="px">1.4px</dimen>
+	<dimen name="sp">1.4sp</dimen>
+	<fraction name="base">80%</fraction>
+	<fraction name="parent">80%p</fraction>
+</resources>

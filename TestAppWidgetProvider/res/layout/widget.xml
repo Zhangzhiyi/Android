@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/widget_bg"
+    android:gravity="center"
+    >
+    
+ <FrameLayout
+ 	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_weight="0.6">
+<TextView
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:id="@+id/homepage"
+	android:textColor="#3333FF"
+	android:paddingLeft="20dip"
+	android:paddingTop="5dip"
+	android:text=">>首页"
+	android:layout_gravity="left"
+/>
+<LinearLayout
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:id="@+id/home">
+	 <ViewFlipper android:id="@+id/tv_run"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:flipInterval="5000"
+        android:inAnimation="@anim/push_left_in" 
+        android:outAnimation="@anim/push_left_out"
+        android:paddingTop="25dip">
+                <TextView
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:gravity="center_horizontal"
+                     android:textSize="16sp"
+                     android:textColor="#FF3300"
+                     android:id="@+id/text01"
+                     android:text="全球通升级优惠"/>
+                <TextView
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:gravity="center_horizontal"
+                     android:textSize="16sp"
+                      android:textColor="#FF3300"
+                     android:id="@+id/text02"
+                     android:text="动感地带预存送话费"/>
+             <TextView
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:gravity="center_horizontal"
+                     android:textSize="16sp"
+                      android:textColor="#FF3300"
+                      android:id="@+id/text03"
+                      android:text="神州行最新优惠"/>
+    </ViewFlipper>
+<!--<TextView
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/show"
+	android:textColor="#000000"
+	android:paddingLeft="20dip"
+	android:text="全球通首页信息"
+	android:layout_gravity="center"
+/>-->
+
+<ImageView
+	android:layout_width="120dip"
+	android:layout_height="110dip"
+	android:src="@drawable/inewtitle"
+	android:layout_gravity="center"
+/>
+</LinearLayout>
+<TextView
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:id="@+id/call"
+	android:textColor="#000000"
+	android:paddingLeft="20dip"
+	android:layout_gravity="center"
+	android:visibility="gone"
+/>
+<TextView
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:id="@+id/gprs"
+	android:textColor="#000000"
+	android:paddingLeft="20dip"
+	android:text="流量"
+	android:layout_gravity="center"
+	android:visibility="gone"
+/>
+<TextView
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:id="@+id/call_time"
+	android:textColor="#000000"
+	android:paddingLeft="20dip"
+	android:text="通话时长"
+	android:layout_gravity="center"
+	android:visibility="gone"
+/>
+
+
+ <include layout="@layout/progressbar"/>
+
+ <TextView
+ 	android:layout_width="wrap_content"
+ 	android:layout_height="wrap_content"
+ 	android:text="点击重新查询"
+ 	android:id="@+id/reQuery"
+ 	android:visibility="gone"
+	android:layout_gravity="bottom|center_horizontal"
+	android:layout_marginBottom="10dip"
+ />
+ </FrameLayout>
+<LinearLayout
+ 	android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:gravity="center"
+>  
+
+   <FrameLayout
+   	android:orientation="vertical"
+    android:layout_width="65dip"
+    android:layout_height="63dip"
+    android:id="@+id/frmae1"
+    >
+    <ImageView
+    	android:layout_width="65dip"
+		android:layout_height="63dip"
+		android:src="@drawable/icon_focus"
+		android:id="@+id/icon_bg1"
+		android:visibility="gone"
+    />
+     
+	   	<Button
+		android:layout_width="46dip"
+		android:layout_height="55dip"
+		android:layout_weight="1"
+		android:background="@drawable/charges_query"
+		android:id="@+id/telfare_query"
+		android:layout_marginTop="2dip"
+		android:layout_gravity="center_horizontal|top"
+		/>
+		<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textColor="#000000"
+		android:textSize="12sp"
+		android:layout_gravity="bottom|center_horizontal"
+		android:text="话费查询"/>
+   </FrameLayout>
+
+ <FrameLayout
+   	android:orientation="vertical"
+    android:layout_width="65dip"
+    android:layout_height="63dip"
+    android:id="@+id/frmae2">
+    
+    <ImageView
+    	android:layout_width="65dip"
+		android:layout_height="63dip"
+		android:src="@drawable/icon_focus"
+		android:id="@+id/icon_bg2"
+		android:visibility="gone"
+    />
+	   	<Button
+		android:layout_width="46dip"
+		android:layout_height="55dip"
+		android:layout_weight="1"
+		android:background="@drawable/gprs_query"
+		android:id="@+id/gprs_query"
+		android:layout_marginTop="2dip"
+		android:layout_gravity="center_horizontal"
+		/>
+		<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textColor="#000000"
+		android:textSize="12sp"
+		android:layout_gravity="bottom|center_horizontal"
+		android:text="流量查询"/>
+   </FrameLayout>
+   
+    <FrameLayout
+   	android:orientation="vertical"
+    android:layout_width="65dip"
+    android:layout_height="63dip"
+    android:id="@+id/frmae3">
+    
+     <ImageView
+    	android:layout_width="65dip"
+		android:layout_height="63dip"
+		android:src="@drawable/icon_focus"
+		android:id="@+id/icon_bg3"
+		android:visibility="gone"
+    />
+	   	<Button
+		android:layout_width="46dip"
+		android:layout_height="55dip"
+		android:layout_weight="1"
+		android:background="@drawable/call_query"
+		android:id="@+id/call_query"
+		android:layout_marginTop="2dip"
+		android:layout_gravity="center_horizontal"
+		/>
+		<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textColor="#000000"
+		android:textSize="12sp"
+		android:layout_gravity="bottom|center_horizontal"
+		android:text="通话时长"/>
+   </FrameLayout>
+   
+</LinearLayout>
+</LinearLayout>

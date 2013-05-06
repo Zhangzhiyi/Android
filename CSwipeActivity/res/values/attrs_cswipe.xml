@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <declare-styleable name="CSwipe">
+        <attr name="outerArcRadius" format="dimension" />
+        <attr name="innerArcRadius" format="dimension" />
+        <attr name="anchor" format="enum">
+            <enum name="top" value="0"/>
+            <enum name="right" value="1"/>
+            <enum name="bottom" value="2"/>
+            <enum name="left" value="3"/>
+        </attr>
+        <attr name="gravity">
+            <flag name="top" value="0x00000030" />
+            <flag name="bottom" value="0x00000050" />
+            <flag name="left" value="0x00000003" />
+            <flag name="right" value="0x00000005" />
+            <flag name="center_vertical" value="0x00000010" />
+            <flag name="center_horizontal" value="0x00000001" />
+            <flag name="center" value="0x00000011" />
+        </attr>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:id="@+id/tabs">
+<!--第一个Tab布局内容  -->
+<LinearLayout 
+	android:id="@+id/Tab1" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+	<LinearLayout 
+		android:id="@+id/LinearLayout02" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:background="@drawable/zt_list_normal" 
+		android:orientation="horizontal" 
+		android:gravity="center_vertical" 
+		android:padding="5dip">
+	<TextView
+		android:id="@+id/tv_top"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="第一个Tab"
+		android:textStyle="bold"
+		android:textColor="#000000"
+	/>
+	<LinearLayout 
+	android:id="@+id/LinearLayout01" 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent" 
+	android:gravity="right|center_vertical">
+	<ImageView
+		android:id="@+id/iv_back"
+	   	android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/zt_tal_icon_zy" 
+		android:layout_gravity="right"/>
+	</LinearLayout>
+</LinearLayout>
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:background="@color/blue"
+	android:padding="5dip">
+	<ListView 
+	android:id="@+id/ListView01" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:listSelector="@drawable/category_selector"
+	android:background="@drawable/zt_list_bg"
+	android:divider="@drawable/zt_list_line"
+	android:cacheColorHint="#00000000" android:scrollbars="none">
+	</ListView>
+</LinearLayout>
+	
+</LinearLayout>
+<!--第二个Tab布局内容  -->
+<LinearLayout 
+	android:id="@+id/Tab2" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+	<LinearLayout 
+		android:id="@+id/LinearLayout02" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:background="@drawable/zt_list_normal" 
+		android:orientation="horizontal" 
+		android:gravity="center_vertical" 
+		android:padding="5dip">
+	<TextView
+		android:id="@+id/tv_top"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="第二个Tab"
+		android:textStyle="bold"
+		android:textColor="#000000"
+	/>
+	<LinearLayout 
+	android:id="@+id/LinearLayout01" 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent" 
+	android:gravity="right|center_vertical">
+	<ImageView
+		android:id="@+id/iv_back"
+	   	android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/zt_tal_icon_zy" 
+		android:layout_gravity="right"/>
+	</LinearLayout>
+</LinearLayout>
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:background="@color/blue"
+	android:padding="5dip">
+	
+</LinearLayout>
+</LinearLayout>
+<!--第三个Tab布局内容  -->
+<LinearLayout 
+	android:id="@+id/Tab3" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+	<LinearLayout 
+		android:id="@+id/LinearLayout02" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:background="@drawable/zt_list_normal" 
+		android:orientation="horizontal" 
+		android:gravity="center_vertical" 
+		android:padding="5dip">
+	<TextView
+		android:id="@+id/tv_top"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="第三个Tab"
+		android:textStyle="bold"
+		android:textColor="#000000"
+	/>
+	<LinearLayout 
+	android:id="@+id/LinearLayout01" 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent" 
+	android:gravity="right|center_vertical">
+	<ImageView
+		android:id="@+id/iv_back"
+	   	android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/zt_tal_icon_zy" 
+		android:layout_gravity="right"/>
+	</LinearLayout>
+</LinearLayout>
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:background="@color/blue"
+	android:padding="5dip">
+
+</LinearLayout>
+</LinearLayout>
+</FrameLayout>

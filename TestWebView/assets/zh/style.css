@@ -1,0 +1,40 @@
+
+*{
+	padding:0; margin:0;
+}
+
+body{
+	background-image:url(background.png);
+	background-repeat:repeat;
+	width:100%;
+	height:100%;
+}
+p.title{
+	font-size:36px; 
+	color:#c59d3b;"
+}
+p.content{
+	color:#e1ffa0;
+	font-size:18px; 
+}
+
+
+div.d1{
+	margin:0 auto;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:10px;
+}
+div.content_margin{
+	margin-left:13%;
+	margin-right:13%;
+}
+
+div.page4{
+	background-image:url(zh_page4_1.png);
+	background-repeat:no-repeat;
+	width:500px;
+	height:500px;
+}
+

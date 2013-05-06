@@ -1,0 +1,44 @@
+<LinearLayout 
+android:id="@+id/LinearLayout01" 
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent" 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+android:orientation="vertical" android:padding="10dip" android:background="@color/bule">
+<LinearLayout 
+android:id="@+id/LinearLayout02" 
+android:layout_height="wrap_content" 
+android:layout_width="fill_parent" 
+android:background="@drawable/filled_box" android:orientation="horizontal" >
+
+<TextView android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:id="@+id/note_title" 
+android:text="标题：" android:textSize="18sp">
+</TextView>
+<com.et.CustomEditText.view.LinedEditText
+android:id="@+id/cutomedit" 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:textSize="22sp" 
+android:gravity="top"  
+android:singleLine="true" 
+android:background="@null">
+</com.et.CustomEditText.view.LinedEditText>
+</LinearLayout>
+<LinearLayout 
+android:id="@+id/LinearLayout03" 
+android:layout_width="fill_parent" 
+android:background="@drawable/filled_box" 
+android:layout_height="fill_parent">
+<com.et.CustomEditText.view.LinedEditText
+android:id="@+id/cutomedit" 
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:textSize="22sp" 
+android:gravity="top"  
+android:background="@null">
+</com.et.CustomEditText.view.LinedEditText>
+</LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yao_guet.test.CustomScrollLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ScrollLayoutTest"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+
+<LinearLayout
+  android:background="#FF00"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"></LinearLayout>
+  
+<FrameLayout
+  android:background="#F0F0"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"></FrameLayout>
+  
+<FrameLayout
+  android:background="#F00F"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  </FrameLayout>
+  
+<LinearLayout
+  android:background="#FF00"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <Button
+  	android:layout_width="wrap_content"
+  	android:layout_height="wrap_content"
+  	android:text="Button1" />
+  </LinearLayout>
+
+
+<LinearLayout
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+  <Button
+  	android:layout_width="wrap_content"
+  	android:layout_height="wrap_content"
+  	android:text="Button2" />
+  </LinearLayout>
+</com.yao_guet.test.CustomScrollLayout>

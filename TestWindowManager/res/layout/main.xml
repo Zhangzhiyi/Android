@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView 
+android:text="本地主线程加入顶级窗口" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</TextView>
+<Button 
+android:text="本地主线程加入顶级窗口" 
+android:id="@+id/calllocal" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="利用远程服务添加顶级窗口"
+    />
+<Button 
+android:text="绑定远程服务" 
+android:id="@+id/bindservice" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<Button 
+android:text="调用远程方法添加顶级窗口" 
+android:id="@+id/callremote" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"
+></Button>
+
+
+
+</LinearLayout>

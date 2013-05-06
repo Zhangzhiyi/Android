@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TestWebView!</string>
+    <string name="app_name">TestWebView</string>
+    <integer name="tutorial_switch_duration">500</integer>
+</resources>

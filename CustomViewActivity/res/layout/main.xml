@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  在
+下
+面的标签中通过xmlns:mobile属性定义了一个命名空间  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mobile="http://net.blogjava.mobile" android:orientation="vertical"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+<!--  mobile:iconSrc
+是
+可选属性，如果未设置该属性，则IconTextView与TextView的效果相同  -->
+<!-- 由于
+IconTextView
+和Main类不在同一个包中，因此，需要显式指定package -->
+<com.et.CustomView.IconTextView
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:text=" 第一个笑脸" mobile:iconSrc="@drawable/icon"
+/>
+<com.et.CustomView.IconTextView
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:text=" 第二个笑脸" android:textSize="24dp" mobile:iconSrc="@drawable/icon"
+       
+/>
+<com.et.CustomView.IconTextView
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:text=" 第三个笑脸" android:textSize="36dp" mobile:iconSrc="@drawable/icon"
+/>
+<com.et.CustomView.IconTextView
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:text=" 第四个笑脸" android:textSize="48dp" mobile:iconSrc="@drawable/icon"
+/>
+<com.et.CustomView.IconTextView
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:text=" 第五个笑脸" android:textSize="36dp" mobile:iconSrc="@drawable/icon"
+/>
+<com.et.CustomView.IconTextView
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:text=" 第六个笑脸" android:textSize="24dp" mobile:iconSrc="@drawable/icon"
+/>
+<com.et.CustomView.IconTextView
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:text=" 第七个笑脸" mobile:iconSrc="@drawable/icon"
+/>
+<com.et.CustomView.CustomImageView android:layout_width="fill_parent" android:layout_height="wrap_content" 
+		android:src="@drawable/icon" />
+</LinearLayout>

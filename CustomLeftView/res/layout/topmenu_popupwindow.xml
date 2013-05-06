@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:id="@+id/HorizontalScrollView01"
+    android:background="@drawable/topmenu_background"
+    android:scrollbars="none"
+    android:layoutAnimation="@anim/layout_right_to_left_slide"
+    >
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" 
+        android:gravity="center_vertical"
+        >
+        <Button
+            android:id="@+id/Button1"
+            style="@style/topmenu_btn"
+            android:drawableTop="@drawable/topmenu_themesetting"
+            android:text="主题设置" 
+        />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topmenu_splitline" />
+        
+        <Button
+            android:id="@+id/Button2"
+            style="@style/topmenu_btn"
+            android:drawableTop="@drawable/topmenu_face"
+            android:text="主题设置" 
+         />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topmenu_splitline" />
+        <Button
+            android:id="@+id/Button3"
+            style="@style/topmenu_btn"
+            android:drawableTop="@drawable/topmenu_speechinput"
+            android:text="主题设置" 
+         />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topmenu_splitline" />
+        <Button
+            android:id="@+id/Button4"
+            style="@style/topmenu_btn"
+            android:drawableTop="@drawable/topmenu_record"
+            android:text="主题设置" 
+         />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topmenu_splitline" />
+        <Button
+            android:id="@+id/Button5"
+            style="@style/topmenu_btn"
+            android:drawableTop="@drawable/topmenu_voicevibrate"
+            android:text="主题设置" 
+         />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topmenu_splitline" />
+        <Button
+            android:id="@+id/Button6"
+            style="@style/topmenu_btn"
+            android:drawableTop="@drawable/topmenu_fantasytext"
+            android:text="主题设置" 
+         />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topmenu_splitline" />
+
+        
+    </LinearLayout>
+</HorizontalScrollView>

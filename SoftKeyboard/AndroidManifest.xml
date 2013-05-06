@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+        package="com.example.android.softkeyboard">
+    <application android:label="@string/ime_name" android:name="MyApplication">
+        <service android:name="SoftKeyboard"
+                android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data android:name="android.view.im" android:resource="@xml/method" />
+        </service>
+        <activity android:name="MainActivity"
+        		  android:label="@string/ime_name" >
+        	<intent-filter>
+		    	<action android:name="android.intent.action.MAIN">
+			    </action>
+				<category android:name="android.intent.category.LAUNCHER"></category>
+			</intent-filter>
+        </activity>
+    </application>
+</manifest>

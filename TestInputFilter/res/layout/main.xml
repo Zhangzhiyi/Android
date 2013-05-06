@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    />
+<EditText 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:id="@+id/editText1" 
+></EditText>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/textView1" android:text="接受指定输入"></TextView>
+<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/editText2" ></EditText>
+<TextView android:text="只接受数据字0-9" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/editText3" ></EditText>
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resoures xmlns:android="http://schemas.android.com/apk/res/android">
+	<extra 
+		android:name="flag"
+		android:value="true">
+	</extra>
+	<extra 
+		android:name="k1"
+		android:value="123">
+	</extra>
+</resoures>

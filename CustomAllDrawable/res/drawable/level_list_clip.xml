@@ -1,0 +1,5 @@
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="3000" android:drawable="@drawable/level_list_clip_red" />
+    <item android:maxLevel="6000" android:drawable="@drawable/level_list_clip_yellow" />
+    <item android:maxLevel="10000" android:drawable="@drawable/level_list_clip_green" />
+</level-list>

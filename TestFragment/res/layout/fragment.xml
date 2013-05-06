@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    >
+    <fragment android:name="com.et.Fragment.CustomFragment" android:id="@+id/fragment1" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="match_parent"></fragment>
+    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout1" android:layout_width="match_parent" android:orientation="vertical" android:layout_weight="1">
+        <TextView android:id="@+id/textView2" android:textAppearance="?android:attr/textAppearanceLarge" android:text="TextView" android:layout_height="wrap_content" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
+
+</LinearLayout>

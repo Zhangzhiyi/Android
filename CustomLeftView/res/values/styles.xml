@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="topmenu_btn">
+        <item name="android:layout_width">75dip</item>
+        <item name="android:layout_height">65dip</item>
+        <item name="android:background">@drawable/topmenu_btn_selector</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:paddingTop">10dip</item>
+        <item name="android:paddingBottom">10dip</item>
+    </style>
+    <style name="facekeyboard_btn">
+        <item name="android:layout_width">50dip</item>
+        <item name="android:layout_height">55dip</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:focusable">false</item>
+    </style>
+    <style name="facekeyboard2_btn">
+        <item name="android:layout_width">40dip</item>
+        <item name="android:layout_height">55dip</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:focusable">false</item>
+    </style>
+    <style name="SymPopupAnimation" parent="android:Animation">
+		<item name="android:windowEnterAnimation">@anim/popupwindow</item>
+	</style>
+</resources>

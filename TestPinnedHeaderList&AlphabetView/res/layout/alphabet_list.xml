@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="wrap_content" > 
+     
+    <com.xiawenquan.test.widget.PinnedHeaderListView 
+        android:id="@+id/list_view" 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent"
+		android:scrollbars="none"
+		android:divider="@drawable/separator"
+        android:dividerHeight="1dip"
+		android:cacheColorHint="#00000000" />
+    <com.xiawenquan.test.widget.AlphabetView
+    	android:id="@+id/alphabet_view" 
+		android:layout_width="30dip"
+		android:layout_height="fill_parent"
+		android:layout_alignParentRight="true" />
+</RelativeLayout> 

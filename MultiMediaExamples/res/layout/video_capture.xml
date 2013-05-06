@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical">
+  
+	<Button
+		android:id="@+id/btn_capture"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="录制" 
+		android:onClick="onClick"
+		/>
+	<Button
+		android:id="@+id/btn_play"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="播放" 
+		android:onClick="onClick"
+		/>
+		
+  	<VideoView
+		android:id="@+id/video_view" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		/>			
+</LinearLayout>

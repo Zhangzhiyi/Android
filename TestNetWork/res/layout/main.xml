@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    android:id="@+id/text"
+    />
+<Button 
+android:id="@+id/Button01" 
+android:text="通过ConnectManager查询APN"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<TextView 
+android:id="@+id/apn01" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"></TextView>
+<Button 
+android:id="@+id/Button02" 
+android:text="通过数据库查询APN"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<TextView 
+android:id="@+id/apn02" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"></TextView>
+<Button 
+android:id="@+id/SqliteChangeAPN"
+android:text="更改APN" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+
+<TextView 
+android:text="点击下面按钮测试用ConnectiveManager来改变接入点" 
+android:id="@+id/TextView01" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"></TextView>
+<Button 
+android:id="@+id/ManagerChangeApn" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+
+<Button 
+android:id="@+id/getwap" 
+android:text="请求wap站点数据"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+</LinearLayout>

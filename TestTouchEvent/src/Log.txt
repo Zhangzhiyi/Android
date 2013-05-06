@@ -1,0 +1,106 @@
+1.onInterceptTouchEvent()处理down事件均返回false，onTouchEvent()处理事件均返回true
+/**在MyTextView触发事件**/  
+05-27 13:04:36.649: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_DOWN
+05-27 13:04:36.649: INFO/com.et.widget.LinearLayout1 onInterceptTouchEvent(14405): MotionEvent.ACTION_DOWN
+05-27 13:04:36.649: INFO/com.et.widget.MyTextView dispatchTouchEvent(14405): MotionEvent.ACTION_DOWN
+05-27 13:04:36.649: INFO/com.et.widget.MyTextView onTouchEvent(14405): MotionEvent.ACTION_DOWN
+05-27 13:04:36.679: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:04:36.706: INFO/com.et.widget.LinearLayout1 onInterceptTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:04:36.706: INFO/com.et.widget.MyTextView dispatchTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:04:36.706: INFO/com.et.widget.MyTextView onTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:04:36.729: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:04:36.740: INFO/com.et.widget.LinearLayout1 onInterceptTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:04:36.740: INFO/com.et.widget.MyTextView dispatchTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:04:36.740: INFO/com.et.widget.MyTextView onTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:04:36.740: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_UP
+05-27 13:04:36.740: INFO/com.et.widget.LinearLayout1 onInterceptTouchEvent(14405): MotionEvent.ACTION_UP
+05-27 13:04:36.740: INFO/com.et.widget.MyTextView dispatchTouchEvent(14405): MotionEvent.ACTION_UP
+05-27 13:04:36.740: INFO/com.et.widget.MyTextView onTouchEvent(14405): MotionEvent.ACTION_UP
+注意，这里在onInterceptTouchEvent均返回false时，LayoutView1的onTouchEvent并不会收到事件，而是最终传递给了MyTextView。
+
+/**只在LinearLayout1触发事件(注意是没有触摸到MyTextView)**/
+05-27 13:07:29.519: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_DOWN
+05-27 13:07:29.519: INFO/com.et.widget.LinearLayout1 onInterceptTouchEvent(14405): MotionEvent.ACTION_DOWN
+05-27 13:07:29.519: INFO/com.et.widget.LinearLayout1 onTouchEvent(14405): MotionEvent.ACTION_DOWN
+05-27 13:07:29.589: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:07:29.589: INFO/com.et.widget.LinearLayout1 onTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:07:29.609: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:07:29.609: INFO/com.et.widget.LinearLayout1 onTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:07:29.759: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:07:29.759: INFO/com.et.widget.LinearLayout1 onTouchEvent(14405): MotionEvent.ACTION_MOVE
+05-27 13:07:29.769: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14405): MotionEvent.ACTION_UP
+05-27 13:07:29.769: INFO/com.et.widget.LinearLayout1 onTouchEvent(14405): MotionEvent.ACTION_UP
+注意，这里在onInterceptTouchEvent均返回false时，onInterceptTouchEvent发现没有可以传递事件到其他控件，LayoutView1的onTouchEvent接收到事件,
+
+
+2./**LayoutView1的onInterceptTouchEvent()处理down事件返回true，MyTextView的onTouchEvent()处理down事件返回true**/
+/**在MyTextView触发事件或是只在LinearLayout1触发事件(注意是没有触摸到MyTextView)**/
+05-27 13:24:06.629: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14942): MotionEvent.ACTION_DOWN
+05-27 13:24:06.629: INFO/com.et.widget.LinearLayout1 onInterceptTouchEvent(14942): MotionEvent.ACTION_DOWN
+05-27 13:24:06.629: INFO/com.et.widget.LinearLayout1 onTouchEvent(14942): MotionEvent.ACTION_DOWN
+05-27 13:24:06.649: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14942): MotionEvent.ACTION_MOVE
+05-27 13:24:06.649: INFO/com.et.widget.LinearLayout1 onTouchEvent(14942): MotionEvent.ACTION_MOVE
+05-27 13:24:06.699: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14942): MotionEvent.ACTION_MOVE
+05-27 13:24:06.719: INFO/com.et.widget.LinearLayout1 onTouchEvent(14942): MotionEvent.ACTION_MOVE
+05-27 13:24:06.729: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14942): MotionEvent.ACTION_MOVE
+05-27 13:24:06.739: INFO/com.et.widget.LinearLayout1 onTouchEvent(14942): MotionEvent.ACTION_MOVE
+05-27 13:24:06.849: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14942): MotionEvent.ACTION_MOVE
+05-27 13:24:06.849: INFO/com.et.widget.LinearLayout1 onTouchEvent(14942): MotionEvent.ACTION_MOVE
+05-27 13:24:06.849: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(14942): MotionEvent.ACTION_UP
+05-27 13:24:06.859: INFO/com.et.widget.LinearLayout1 onTouchEvent(14942): MotionEvent.ACTION_UP
+结论：如果该ViewGroup的onInterceptTouchEvent()在接收到down事件处理完成之后return true，那么后续的move, up等
+事件将不再传递给onInterceptTouchEvent()，而是和down事件一样传递给该ViewGroup的onTouchEvent()处理，注意，目标view将接收不到任何事件。
+
+3./**LayoutView1的onInterceptTouchEvent()处理down事件返回false，MyTextView的onTouchEvent()处理down事件返回false**/
+05-27 13:39:52.038: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(15481): MotionEvent.ACTION_DOWN
+05-27 13:39:52.038: INFO/com.et.widget.LinearLayout1 onInterceptTouchEvent(15481): MotionEvent.ACTION_DOWN
+05-27 13:39:52.038: INFO/com.et.widget.MyTextView dispatchTouchEvent(15481): MotionEvent.ACTION_DOWN
+05-27 13:39:52.038: INFO/com.et.widget.MyTextView onTouchEvent(15481): MotionEvent.ACTION_DOWN
+05-27 13:39:52.038: INFO/com.et.widget.LinearLayout1 onTouchEvent(15481): MotionEvent.ACTION_DOWN
+05-27 13:39:52.068: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(15481): MotionEvent.ACTION_MOVE
+05-27 13:39:52.068: INFO/com.et.widget.LinearLayout1 onTouchEvent(15481): MotionEvent.ACTION_MOVE
+05-27 13:39:52.118: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(15481): MotionEvent.ACTION_MOVE
+05-27 13:39:52.149: INFO/com.et.widget.LinearLayout1 onTouchEvent(15481): MotionEvent.ACTION_MOVE
+05-27 13:39:52.149: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(15481): MotionEvent.ACTION_MOVE
+05-27 13:39:52.158: INFO/com.et.widget.LinearLayout1 onTouchEvent(15481): MotionEvent.ACTION_MOVE
+05-27 13:39:52.179: INFO/com.et.widget.LinearLayout1 dispatchTouchEvent(15481): MotionEvent.ACTION_UP
+05-27 13:39:52.188: INFO/com.et.widget.LinearLayout1 onTouchEvent(15481): MotionEvent.ACTION_UP
+结论：由于MyTextView在onTouchEvent()中return false，down事件再次被传递给其父view，即LayoutView1的onTouchEvent()方法处理，
+后续的move和up事件均被传递给LayoutView1的onTouchEvent()处理，而没有传递给MyTextView。
+
+4.MyTextView实现OnTouchListener()接口，down、move、up事件都返回false
+10-24 09:37:58.291: I/com.et.widget.LinearLayout1 dispatchTouchEvent(783): MotionEvent.ACTION_DOWN
+10-24 09:37:58.291: I/com.et.widget.LinearLayout1 onInterceptTouchEvent(783): MotionEvent.ACTION_DOWN
+10-24 09:37:58.291: I/com.et.widget.MyTextView dispatchTouchEvent(783): MotionEvent.ACTION_DOWN
+10-24 09:37:58.291: I/MainActivity$MyTextView onTouchEvent(783): MotionEvent.ACTION_DOWN
+10-24 09:37:58.291: I/com.et.widget.MyTextView onTouchEvent(783): MotionEvent.ACTION_DOWN
+10-24 09:37:58.370: I/com.et.widget.LinearLayout1 dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.370: I/com.et.widget.LinearLayout1 onInterceptTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.370: I/com.et.widget.MyTextView dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.370: I/MainActivity$MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.370: I/com.et.widget.MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.460: I/com.et.widget.LinearLayout1 dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.460: I/com.et.widget.LinearLayout1 onInterceptTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.460: I/com.et.widget.MyTextView dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.460: I/MainActivity$MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.460: I/com.et.widget.MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.460: I/com.et.widget.LinearLayout1 dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.470: I/com.et.widget.LinearLayout1 onInterceptTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.470: I/com.et.widget.MyTextView dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.470: I/MainActivity$MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.470: I/com.et.widget.MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.540: I/com.et.widget.LinearLayout1 dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.540: I/com.et.widget.LinearLayout1 onInterceptTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.540: I/com.et.widget.MyTextView dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.540: I/MainActivity$MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.540: I/com.et.widget.MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.620: I/com.et.widget.LinearLayout1 dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.620: I/com.et.widget.LinearLayout1 onInterceptTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.620: I/com.et.widget.MyTextView dispatchTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.620: I/MainActivity$MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.620: I/com.et.widget.MyTextView onTouchEvent(783): MotionEvent.ACTION_MOVE
+10-24 09:37:58.630: I/com.et.widget.LinearLayout1 dispatchTouchEvent(783): MotionEvent.ACTION_UP
+10-24 09:37:58.630: I/com.et.widget.LinearLayout1 onInterceptTouchEvent(783): MotionEvent.ACTION_UP
+10-24 09:37:58.630: I/com.et.widget.MyTextView dispatchTouchEvent(783): MotionEvent.ACTION_UP
+10-24 09:37:58.630: I/MainActivity$MyTextView onTouchEvent(783): MotionEvent.ACTION_UP
+10-24 09:37:58.630: I/com.et.widget.MyTextView onTouchEvent(783): MotionEvent.ACTION_UP

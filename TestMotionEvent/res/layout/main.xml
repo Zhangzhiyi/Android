@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"  android:text="dispatchTouchEvent" android:background="@color/gray_front"/>
+<LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="fill_parent">
+    <TextView android:text="X:" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    <TextView  android:id="@+id/disx" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+</LinearLayout>
+<LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="fill_parent">
+    <TextView android:text="Y:" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    <TextView  android:id="@+id/disy" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+</LinearLayout>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"  android:text="onTouchEvent" android:background="@color/gray_front"/>
+<LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="fill_parent">
+    <TextView android:text="X:"  android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    <TextView  android:id="@+id/toux" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+</LinearLayout>
+<LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="fill_parent">
+    <TextView android:text="Y:"  android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    <TextView  android:id="@+id/touy" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+</LinearLayout>
+</LinearLayout>

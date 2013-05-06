@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/lindarLayout01"
+    >
+    <Button android:id="@+id/button"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content" android:text="Button"  android:scrollX="100dip"/>
+	<TextView
+	    android:id="@+id/textview"
+	    android:textAppearance="@android:style/TextAppearance.Large"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/hello" />
+
+<EditText android:text="@+id/EditText01" android:id="@+id/EditText01" android:layout_height="wrap_content" android:layout_width="250dip" android:drawableRight="@drawable/icon"></EditText>
+
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextSpan" android:text="备份"></Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TestLayout" android:text="TestLayout"></Button>
+
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="还原" android:id="@+id/TestScroller"></Button>
+<Button android:text="调用系统图片裁剪" android:id="@+id/cilpimage" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	<RatingBar
+	    android:id="@+id/ratingBar1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" 
+	    style="@style/NoticeRatingBar"
+	    android:numStars="5"
+	    android:isIndicator="true"
+	    android:rating="4.5"
+	    />
+		<Button
+	    android:id="@+id/button1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="启动TestUI工程的Activity" />
+		
+</LinearLayout>

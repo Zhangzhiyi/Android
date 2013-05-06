@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical">
+
+
+	<Button
+		android:id="@+id/btn1" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="1、调用系统自带Camera应用来捕获图片" 
+		android:onClick="onClick"/>
+		
+
+	<Button
+		android:id="@+id/btn2" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="2、检索多媒体库获取图片信息" 
+		android:onClick="onClick"/>
+		
+
+	<Button
+		android:id="@+id/btn3" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="3、使用Camera类和SurfaceView实现自己的Camera" 
+		android:onClick="onClick"/>
+		
+
+	<Button
+		android:id="@+id/btn4" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="4、使用Matrix和ColorMatrix对图片变换和处理" 
+		android:onClick="onClick"/>	
+		
+	<Button
+		android:id="@+id/btn5" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="5、检索多媒体库中音频并调用自带播放器播放" 
+		android:onClick="onClick"/>	
+		
+	<Button
+		android:id="@+id/btn6" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="6、使用Service完成背景音乐的播放" 
+		android:onClick="onClick"/>		
+		
+	<Button
+		android:id="@+id/btn7" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="7、播放网络上的音频文件" 
+		android:onClick="onClick"/>	
+		
+	<Button
+		android:id="@+id/btn8" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="8、音频录制三种实现方式" 
+		android:onClick="onClick"/>		
+		
+	<Button
+		android:id="@+id/btn9" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="9、视频部分实例" 
+		android:onClick="onClick"/>														
+</LinearLayout>

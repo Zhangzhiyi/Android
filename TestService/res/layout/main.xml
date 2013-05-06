@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<Button android:id="@+id/btnStartService" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="Start Service" />
+	<Button android:id="@+id/btnStopService" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="Stop Service" />
+	<Button android:id="@+id/btnBindService" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="Bind Service" />
+	<Button android:id="@+id/btnUnbindService" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="Unbind Service" />
+	<Button android:id="@+id/callback" android:layout_height="wrap_content" android:layout_width="fill_parent" android:text="调用方法"></Button>
+	<Button android:id="@+id/print" android:layout_height="wrap_content" android:layout_width="fill_parent" android:text="打印服务名字"></Button>
+</LinearLayout>
