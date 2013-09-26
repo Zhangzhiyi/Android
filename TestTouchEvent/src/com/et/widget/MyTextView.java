@@ -33,6 +33,9 @@ public class MyTextView extends TextView {
 			case MotionEvent.ACTION_UP:
 				Log.i(TAG + " dispatchTouchEvent", "MotionEvent.ACTION_UP");
 				break;
+			case MotionEvent.ACTION_CANCEL:
+				Log.i(TAG + " dispatchTouchEvent", "MotionEvent.ACTION_CANCEL");
+				break;
 		}
 		return super.dispatchTouchEvent(ev);
 	}
@@ -44,20 +47,24 @@ public class MyTextView extends TextView {
 		switch (action) {
 			case MotionEvent.ACTION_DOWN:
 				Log.i(TAG + " onTouchEvent", "MotionEvent.ACTION_DOWN");
-				/**注意：接收down事件，如果这里返回false，后续的move、up事件接收不到。
-				而且父View会重新执行一次down事件**/
+				/**注意：接收down事件，如果这里返回false，后续的move、up事件接收不到，之后的事件处理都交给父View的onTouchEvent。
+				所以要想接收后续的的事件处理，down事件一定要返回true**/
+				//getParent().requestDisallowInterceptTouchEvent(true);
 				return true;
 //				break;
 			case MotionEvent.ACTION_MOVE:
 				Log.i(TAG + " onTouchEvent", "MotionEvent.ACTION_MOVE");
 				//这里的返回值不影响后续事件接收
-				return false;
-//				break;
+				//return false;
+				break;
 			case MotionEvent.ACTION_UP:
 				Log.i(TAG + " onTouchEvent", "MotionEvent.ACTION_UP");
 				//这里的返回值不影响后续事件接收
-				return true;
-//				break;
+				//return true;
+				break;
+			case MotionEvent.ACTION_CANCEL:
+				Log.i(TAG + " onTouchEvent", "MotionEvent.ACTION_CANCEL");
+				break;
 		}
 		return false;
 //		return super.onTouchEvent(event);

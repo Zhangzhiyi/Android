@@ -33,18 +33,18 @@ public class LinearLayout1 extends LinearLayout {
 		         * 
 		         * 实际用途看TestHeaderListView项目
 		         * **/
-//				requestDisallowInterceptTouchEvent(true);
-//				return true;
+				//requestDisallowInterceptTouchEvent(true); //这里不会跳过onInterceptTouchEvent的事件处理，在这里设置是没有效的
 				break;
 			case MotionEvent.ACTION_MOVE:
 				Log.i(TAG + " dispatchTouchEvent", "MotionEvent.ACTION_MOVE");
-//				requestDisallowInterceptTouchEvent(true);
-//				return true;
+				requestDisallowInterceptTouchEvent(true);	//跳过onInterceptTouchEvent的move事件和up事件
 				break;
 			case MotionEvent.ACTION_UP:
 				Log.i(TAG + " dispatchTouchEvent", "MotionEvent.ACTION_UP");
-//				requestDisallowInterceptTouchEvent(true);
-//				return true;
+				//requestDisallowInterceptTouchEvent(true);  //跳过onInterceptTouchEvent的up事件
+				break;
+			case MotionEvent.ACTION_CANCEL:
+				Log.i(TAG + " dispatchTouchEvent", "MotionEvent.ACTION_CANCEL");
 				break;
 		}
 		return super.dispatchTouchEvent(ev);
@@ -77,23 +77,23 @@ public class LinearLayout1 extends LinearLayout {
 			case MotionEvent.ACTION_MOVE:
 				Log.i(TAG + " onInterceptTouchEvent", "MotionEvent.ACTION_MOVE");
 				/**如果这里返回true,那么onInterceptTouchEvent只会接收到一次move事件，且move和后续的up事件以后都
-				 * 不会传递到这里和子view,之后的move和up事件都交给onTouchEvent来处理
+				 * 不会传递到这里和子view,而且这时view会受到cancel事件，之后的move和up事件都交给onTouchEvent来处理,
 				 * **/
-//				return true;
+				//return true;
 				break;
 			case MotionEvent.ACTION_UP:
 				Log.i(TAG + " onInterceptTouchEvent", "MotionEvent.ACTION_UP");
-				/**如果这里返回true,那么onInterceptTouchEvent会接收到一次up事件,且up事件不会传给子view,
+				/**如果这里返回true,那么onInterceptTouchEvent会接收到一次up事件,且up事件不会传给子view,而且这时view会受到cancel事件
 				 * 但是这次up事件也不交给onTouchEvent处理
 				 * **/
-//				return true;
+				//return true;
 				break;
 			case MotionEvent.ACTION_CANCEL:
 				Log.i(TAG + " onInterceptTouchEvent", "MotionEvent.ACTION_CANCEL");
 				break;
 		}
-		return false;//父类方法就是return false
-//		return super.onInterceptTouchEvent(ev);
+		//return false;//父类方法就是return false
+		return super.onInterceptTouchEvent(ev);
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -111,8 +111,11 @@ public class LinearLayout1 extends LinearLayout {
 			case MotionEvent.ACTION_UP:
 				Log.i(TAG + " onTouchEvent", "MotionEvent.ACTION_UP");
 				return true;
+			case MotionEvent.ACTION_CANCEL:
+				Log.i(TAG + " onTouchEvent", "MotionEvent.ACTION_CANCEL");
+				return true;
 				//break;
 		}
-		return false;
+		return super.onTouchEvent(event);
 	}
 }

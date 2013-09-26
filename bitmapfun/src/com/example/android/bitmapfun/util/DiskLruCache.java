@@ -158,7 +158,7 @@ public class DiskLruCache {
         while (count < MAX_REMOVALS &&
                 (cacheSize > maxCacheItemSize || cacheByteSize > maxCacheByteSize)) {
         	/**LinkedHashMap现在是按照按从近期访问最少到近期访问最多的顺序（即访问顺序）
-        	 * 来保存元素，所以移除头4个元素就是最少访问元素**/
+        	 * 来保存元素，所以移除头几个元素就是最少访问元素**/
             eldestEntry = mLinkedHashMap.entrySet().iterator().next();
             eldestFile = new File(eldestEntry.getValue());
             eldestFileSize = eldestFile.length();

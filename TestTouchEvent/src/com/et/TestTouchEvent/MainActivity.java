@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 				int action = event.getAction();
 				int x = (int) event.getX();
 				int y = (int) event.getY();
-				Log.i(TAG + " onTouch", "x = "+ x + " y =" + y);
+				//Log.i(TAG + " onTouch", "x = "+ x + " y =" + y);
 				switch (action) {
 					case MotionEvent.ACTION_DOWN:
 						Log.i(TAG + " onTouch", "MotionEvent.ACTION_DOWN");
@@ -41,6 +41,7 @@ public class MainActivity extends Activity {
 						 * 不到后续move、up事件;而此时这里返回true，onTouchEvent方法返回false，这里也
 						 * 可以接收到后续的move、up事件，因为这里返回true，所以不会再次运行onTouchEvent方法down事件;**/
 //						return false;
+						//linearLayout1.requestDisallowInterceptTouchEvent(true);//还是运行了跳过了linearLayout1的onInterceptTouchEvent的down事件，但是没有收到后续的move事件和up事件
 						break;
 					case MotionEvent.ACTION_MOVE:
 						Log.i(TAG + " onTouch", "MotionEvent.ACTION_MOVE");
@@ -49,7 +50,8 @@ public class MainActivity extends Activity {
 						 * 而返回false就会再执行一次MyTextView类重写onTouchEvent方法move事件，
 						 * 传送move事件onTouchEvent返回值不影响后续接收事件
 						 * **/
-//						return true;
+						//return true;
+						//linearLayout1.requestDisallowInterceptTouchEvent(true); //跳过了linearLayout1的onInterceptTouchEvent的move事件和up事件
 						break;
 					case MotionEvent.ACTION_UP:
 						Log.i(TAG + " onTouch", "MotionEvent.ACTION_UP");
@@ -59,6 +61,9 @@ public class MainActivity extends Activity {
 						 * 传送up事件onTouchEvent返回值不影响后续接收事件
 						 * **/
 //						return true;
+						break;
+					case MotionEvent.ACTION_CANCEL:
+						Log.i(TAG + " onTouch", "MotionEvent.ACTION_CANCEL");
 						break;
 				}
 				return false;
