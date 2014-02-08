@@ -15,6 +15,14 @@ extern "C" {
 JNIEXPORT jstring JNICALL Java_com_et_testndk_NativeClass_getResult
   (JNIEnv *, jobject);
 
+/*
+ * Class:     com_et_testndk_NativeClass
+ * Method:    getLine
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_et_testndk_NativeClass_getLine
+  (JNIEnv *, jobject, jstring);
+
 #ifdef __cplusplus
 }
 #endif
