@@ -1,4 +1,4 @@
-obj/local/armeabi/objs/TestNDK/TestNDK.o: jni/TestNDK.cpp \
+obj/local/armeabi/objs-debug/TestNDK/TestNDK.o: jni/TestNDK.cpp \
  D:/android-ndk-r8e/platforms/android-14/arch-arm/usr/include/jni.h \
  jni/com_et_testndk_NativeClass.h \
  D:/android-ndk-r8e/platforms/android-14/arch-arm/usr/include/stdio.h \

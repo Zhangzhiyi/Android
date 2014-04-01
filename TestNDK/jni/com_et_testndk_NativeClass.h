@@ -13,7 +13,7 @@ extern "C" {
  * Signature: ()Ljava/lang/String;
  */
 JNIEXPORT jstring JNICALL Java_com_et_testndk_NativeClass_getResult
-  (JNIEnv *, jobject);
+  (JNIEnv *env, jobject);
 
 /*
  * Class:     com_et_testndk_NativeClass

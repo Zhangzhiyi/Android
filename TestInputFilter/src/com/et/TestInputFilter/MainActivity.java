@@ -42,7 +42,6 @@ public class MainActivity extends Activity {
         };
         filters1[1] = new InputFilter.AllCaps();       
         edit1.setFilters(filters1);
-        
         edit2.setKeyListener(new NumberKeyListener() {
 			
 			@Override

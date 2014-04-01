@@ -4,9 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 /*
  * Class:     com_et_testndk_NativeClass
  * Method:    getResult
@@ -23,15 +20,11 @@ JNIEXPORT jstring JNICALL Java_com_et_testndk_NativeClass_getResult
  * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */
 JNIEXPORT jstring JNICALL Java_com_et_testndk_NativeClass_getLine
-  (JNIEnv *, jobject, jstring)
+  (JNIEnv *env, jobject obj, jstring value)
 {
-	char buf[128] = "我是从本地代码获取到的"; //字符缓冲
-	 jbyte *str;//jbyte类型对应C中的unsigned char
-	  str = (*env)->GetStringUTFChars(env, jstring, NULL);
-	  (*env)->ReleaseStringUTFChars(env, jstring, str);
-	  return (*env)->NewStringUTF(env, buf);
+	  const char *value_ = env->GetStringUTFChars(value, NULL);
+	 printf("get a variable form Java：%s", value_);
+	  env->ReleaseStringUTFChars(value, value_);
+	  return env->NewStringUTF("pass a value to C++");
 }
-#ifdef __cplusplus
-}
-#endif
 
