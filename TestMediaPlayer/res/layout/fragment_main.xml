@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.testmediaplayer.MainActivity$PlaceholderFragment" >
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:orientation="vertical">
+		<LinearLayout android:orientation="horizontal"
+			android:layout_gravity="center_horizontal" 
+			android:layout_height="wrap_content" android:layout_width="wrap_content">
+			<Button android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/btnPlayUrl"
+				android:text="播放网络音频"></Button>
+			<Button android:layout_height="wrap_content" android:id="@+id/btnPause"
+				android:text="暂停" android:layout_width="80dip"></Button>
+			<Button android:layout_height="wrap_content"
+				android:layout_width="80dip" android:text="停止" android:id="@+id/btnStop"></Button>
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_marginBottom="20dip">
+			<SeekBar android:layout_gravity="center_vertical"
+				android:layout_weight="1.0"
+				android:layout_height="wrap_content" android:layout_width="wrap_content"
+				android:id="@+id/skbProgress" android:max="100"></SeekBar>
+		</LinearLayout>
+	</LinearLayout>
+</RelativeLayout>

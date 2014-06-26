@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:text="choose small image" />
+        android:text="choose_clip small" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/button1"
         android:layout_toRightOf="@+id/button1"
-        android:text="choose larger image" />
+        android:text="choose_clip larger" />
 
     <Button
         android:id="@+id/button3"
@@ -45,5 +45,14 @@
         android:layout_alignLeft="@+id/button1"
         android:layout_below="@+id/button1"
         android:text="capture image" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_toRightOf="@+id/button3"
+        android:text="local crop" />
 
 </RelativeLayout>

@@ -2,18 +2,16 @@ package com.test.testcropimage;
 
 import java.io.FileNotFoundException;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
+import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,15 +20,16 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-import android.os.Build;
-import android.provider.MediaStore;
+
+import com.jb.gokeyboard.cropImage.CropImageActivity;
 
 public class MainActivity extends ActionBarActivity {
 	
 	public final static int CHOOSE_SMALL_PICTURE = 1001;
 	public final static int CHOOSE_BIG_PICTURE = 1002;
 	public final static int TAKE_BIG_PICTURE = 1003;
+	
+	public final static int LOCAL_CROP_IMAGE = 1004;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +67,10 @@ public class MainActivity extends ActionBarActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
-    	private Button mChooseButton;
-    	private Button mClipButton;
+    	private Button mSmallButton;
+    	private Button mLargerButton;
     	private Button mCaptureButton;
+    	private Button mLocalCropBtn;
     	private ImageView mImageView;
         public PlaceholderFragment() {
         }
@@ -79,10 +79,11 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            mChooseButton = (Button) rootView.findViewById(R.id.button1);
-            mClipButton = (Button) rootView.findViewById(R.id.button2);
+            mSmallButton = (Button) rootView.findViewById(R.id.button1);
+            mLargerButton = (Button) rootView.findViewById(R.id.button2);
             mCaptureButton = (Button) rootView.findViewById(R.id.button3);
             mImageView = (ImageView) rootView.findViewById(R.id.imageView1);
+            mLocalCropBtn = (Button) rootView.findViewById(R.id.button4);
             return rootView;
         }
         @Override
@@ -99,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
 					startActivityForResult(intent, TAKE_BIG_PICTURE);
 				}
 			});
-        	mChooseButton.setOnClickListener(new OnClickListener() {
+        	mSmallButton.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
@@ -120,7 +121,7 @@ public class MainActivity extends ActionBarActivity {
 
 				}
 			});
-        	mClipButton.setOnClickListener(new OnClickListener() {
+        	mLargerButton.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
@@ -129,7 +130,7 @@ public class MainActivity extends ActionBarActivity {
 						Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
 						intent.setType("image/*");
 			    		intent.putExtra("crop", "true");
-			    		intent.putExtra("aspectX", 2);
+			    		intent.putExtra("aspectX", 1);
 			    		intent.putExtra("aspectY", 1);
 			    		intent.putExtra("outputX", 500);
 			    		intent.putExtra("outputY", 500);
@@ -140,6 +141,14 @@ public class MainActivity extends ActionBarActivity {
 			    		intent.putExtra("noFaceDetection", true); // no face detection
 						startActivityForResult(intent, CHOOSE_BIG_PICTURE);
 		
+				}
+			});
+        	mLocalCropBtn.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					startCropImage(getTempUri(), getTempUri(), 300, 300, getActivity());
 				}
 			});
         }
@@ -191,6 +200,27 @@ public class MainActivity extends ActionBarActivity {
     		intent.putExtra("noFaceDetection", true); // no face detection
     		startActivityForResult(intent, requestCode);
     	}
+      //本地裁剪界面
+    	public void startCropImage(Uri srcUri,Uri dstUri,int x,int y,Context ct)
+        {
+        	//Uri srcUri = Uri.parse("file://" + src_path);
+        	//Uri dstUri = Uri.parse("file://" + dst_path);
+        	
+            Intent cropIntent = new Intent(ct, CropImageActivity.class);
+            cropIntent.setData(srcUri);					
+            cropIntent.putExtra("output", dstUri);		
+            cropIntent.putExtra("outputFormat", "PNG");	
+            cropIntent.putExtra("scale", true);			
+            cropIntent.putExtra("aspectX", x);
+            cropIntent.putExtra("aspectY", y);
+            cropIntent.putExtra("outputX", x);		
+            cropIntent.putExtra("outputY", y);		
+            
+            cropIntent.putExtra("arrowHorizontal", R.drawable.camera_crop_width);
+            cropIntent.putExtra("arrowVertical", R.drawable.camera_crop_height);
+            startActivityForResult(cropIntent, LOCAL_CROP_IMAGE);
+            //ct.startActivity(cropIntent);
+        }
     }
 
 }

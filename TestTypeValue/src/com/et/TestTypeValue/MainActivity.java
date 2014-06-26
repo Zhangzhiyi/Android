@@ -10,7 +10,7 @@ import android.util.TypedValue;
 
 public class MainActivity extends Activity {
 	
-	//³¢ÊÔ²»Í¬µ¥Î» R.dimen.px;  R.dimen.sp;
+	//å°è¯•ä¸åŒå•ä½ R.dimen.px;  R.dimen.sp;
 	//int dimens = R.dimen.dip; 
 	int dimens = R.dimen.px; 
 	//int dimens = R.dimen.sp; 
@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        //µ÷ÊÔ²é¿´Ğ§ÂÊ
+        //è°ƒè¯•æŸ¥çœ‹æ•ˆç‡
         if (TRACEVIEW_BOOLEAN) {
         	Debug.startMethodTracing();
 		}
@@ -31,24 +31,24 @@ public class MainActivity extends Activity {
         Log.i("tag", "" + value);
        // value = TypedValue.c
         
-        //²»±ä
+        //ä¸å˜
         value = getResources().getDimension(dimens);
         Log.i("getDimension", "" + value);
         
-        //Ğ¡ÊıÈ¡×îĞ¡ÕûÊı
+        //å°æ•°å–æœ€å°æ•´æ•°
         value = getResources().getDimensionPixelOffset(dimens);
         Log.i("getDimensionPixelOffset", "" + value);
         
-        //Ğ¡ÊıµãºóËÄÉáÎåÈë
+        //å°æ•°ç‚¹åå››èˆäº”å…¥
         value = getResources().getDimensionPixelSize(dimens);
         Log.i("getDimensionPixelSize", "" + value);
         
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         float density = displayMetrics.density;
         value = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dimention, displayMetrics);
-        Log.i("dip ×ª dip", "" + value);
+        Log.i("dip è½¬ dip", "" + value);
         
-        /**Èç¹û°Ù·ÖÊıÖµ´øÓĞp½áÎ²£¬¾ÍÓÃµÚÈı¸ö²ÎÊıÏà³Ë**/
+        /**å¦‚æœç™¾åˆ†æ•°å€¼å¸¦æœ‰pç»“å°¾ï¼Œå°±ç”¨ç¬¬ä¸‰ä¸ªå‚æ•°ç›¸ä¹˜**/
         float base = getResources().getFraction(R.fraction.base, 2, 3);
         float parent = getResources().getFraction(R.fraction.parent, 2, 3);
         Log.i("base fraction", "" + base);
