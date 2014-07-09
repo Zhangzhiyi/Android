@@ -71,6 +71,7 @@ public class MainActivity extends ActionBarActivity {
     	private Button mLargerButton;
     	private Button mCaptureButton;
     	private Button mLocalCropBtn;
+    	private Button mSystemCropBtn;
     	private ImageView mImageView;
         public PlaceholderFragment() {
         }
@@ -84,6 +85,7 @@ public class MainActivity extends ActionBarActivity {
             mCaptureButton = (Button) rootView.findViewById(R.id.button3);
             mImageView = (ImageView) rootView.findViewById(R.id.imageView1);
             mLocalCropBtn = (Button) rootView.findViewById(R.id.button4);
+            mSystemCropBtn = (Button) rootView.findViewById(R.id.button5);
             return rootView;
         }
         @Override
@@ -111,7 +113,7 @@ public class MainActivity extends ActionBarActivity {
 					intent.putExtra("crop", "true");
 					intent.putExtra("aspectX", 1);
 					intent.putExtra("aspectY", 1);
-					intent.putExtra("outputX", 100);
+					intent.putExtra("outputX", 1000);
 					intent.putExtra("outputY", 100);
 					intent.putExtra("scale", true);
 					intent.putExtra("return-data", true);
@@ -130,8 +132,8 @@ public class MainActivity extends ActionBarActivity {
 						Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
 						intent.setType("image/*");
 			    		intent.putExtra("crop", "true");
-			    		intent.putExtra("aspectX", 1);
-			    		intent.putExtra("aspectY", 1);
+			    		intent.putExtra("aspectX", 1080);
+			    		intent.putExtra("aspectY", 1920);
 			    		intent.putExtra("outputX", 500);
 			    		intent.putExtra("outputY", 500);
 			    		intent.putExtra("scale", true);
@@ -148,7 +150,15 @@ public class MainActivity extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					startCropImage(getTempUri(), getTempUri(), 300, 300, getActivity());
+					startLocalCropImage(getTempUri(), getTempUri(), 300, 300, getActivity());
+				}
+			});
+        	mSystemCropBtn.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					cropImageUri(getTempUri(), 780, 600, CHOOSE_BIG_PICTURE);
 				}
 			});
         }
@@ -201,7 +211,7 @@ public class MainActivity extends ActionBarActivity {
     		startActivityForResult(intent, requestCode);
     	}
       //本地裁剪界面
-    	public void startCropImage(Uri srcUri,Uri dstUri,int x,int y,Context ct)
+    	public void startLocalCropImage(Uri srcUri,Uri dstUri,int x,int y,Context ct)
         {
         	//Uri srcUri = Uri.parse("file://" + src_path);
         	//Uri dstUri = Uri.parse("file://" + dst_path);

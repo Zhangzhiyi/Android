@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <color name="blue">#C4E1FF</color>
+<color name="red">#ffff0000</color>
+<color name="black">#000000</color>
+<color name="color_listitem_normal">#fbfbfb</color>
+<color name="white">#ffffff</color>
 </resources>

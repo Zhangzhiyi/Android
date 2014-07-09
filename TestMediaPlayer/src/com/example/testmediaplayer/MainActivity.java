@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					// 在百度MP3里随便搜索到的,大家可以试试别的链接
-					String url = "http://mp3.kolstudio.com/share/2012/11/20//c9b386271c9677b5fd1eea6919028b01.mp3";
+					String url = "http://mat1.gtimg.com/musictop/mp3/521/kunminghu.mp3";
 					player.playUrl(url);
 				}
 			});
