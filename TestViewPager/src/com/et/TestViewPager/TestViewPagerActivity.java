@@ -21,6 +21,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
 public class TestViewPagerActivity extends Activity {
 	
@@ -161,9 +162,10 @@ public class TestViewPagerActivity extends Activity {
 			Log.i(TAG, "instantiateItem");
 			ImageView imageView = new ImageView(context);
 //			imageView.setScaleType(ScaleType.FIT_XY);
-			ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 			imageView.setLayoutParams(params);
 			imageView.setImageResource(drawables.get(position%drawables.size()));
+			imageView.setScaleType(ScaleType.FIT_XY);
 			container.addView(imageView);
 			return imageView;
 		}
