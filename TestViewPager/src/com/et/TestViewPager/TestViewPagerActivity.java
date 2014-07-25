@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,13 +14,12 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
 
 public class TestViewPagerActivity extends Activity {
 	
@@ -76,12 +74,13 @@ public class TestViewPagerActivity extends Activity {
 				}
 			}
 		});
+        //控制循环滚动的handler
         final Handler handler = new Handler(){
         	@Override
         	public void handleMessage(Message msg) {
         		// TODO Auto-generated method stub
         		int curItem = mViewPager.getCurrentItem();
-				mViewPager.setCurrentItem(curItem + 1 , true);
+				//mViewPager.setCurrentItem(curItem + 1 , true);
 				sendEmptyMessageDelayed(1, 3000);
         	}
         };
@@ -160,14 +159,21 @@ public class TestViewPagerActivity extends Activity {
 		public Object instantiateItem(ViewGroup container, int position) {
 			// TODO Auto-generated method stub
 			Log.i(TAG, "instantiateItem");
-			ImageView imageView = new ImageView(context);
-//			imageView.setScaleType(ScaleType.FIT_XY);
-			ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-			imageView.setLayoutParams(params);
-			imageView.setImageResource(drawables.get(position%drawables.size()));
-			imageView.setScaleType(ScaleType.FIT_XY);
-			container.addView(imageView);
-			return imageView;
+			LinearLayout layout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.innerpager_item_layout, null);
+//			ImageView imageView = (ImageView) layout.findViewById(R.id.imageView1);
+//			imageView.setImageResource(drawables.get(position%drawables.size()));
+			
+			ViewPager viewPager = (ViewPager) layout.findViewById(R.id.viewPager);
+			ViewPagerDot viewPagerDot = (ViewPagerDot) layout.findViewById(R.id.details_dot);
+			ArrayList<Integer> lists = new ArrayList<Integer>();
+	        lists.add(R.drawable.drawable1);
+	        lists.add(R.drawable.drawable2);
+	        lists.add(R.drawable.drawable3);
+			MyInnerPagerAdapter pagerAdater = new MyInnerPagerAdapter(context, lists);
+			viewPager.setAdapter(pagerAdater);
+			viewPagerDot.setViewPager(viewPager);
+			container.addView(layout);
+			return layout;
 		}
 		@Override
 		public CharSequence getPageTitle(int position) {
@@ -195,11 +201,8 @@ public class TestViewPagerActivity extends Activity {
     	@Override
     	public void destroyItem(ViewGroup container, int position, Object object) {
     		// TODO Auto-generated method stub
+    		container.removeView((View) object);
     		Log.i(TAG, "destroyItem");
-    		ImageView image = (ImageView) object;
-    		Drawable drawable = image.getDrawable();
-    		drawable = null;
-//    		drawables.remove(position);
     	}
     }
 }
