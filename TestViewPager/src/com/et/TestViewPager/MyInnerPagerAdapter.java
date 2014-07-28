@@ -2,7 +2,7 @@ package com.et.TestViewPager;
 
 import java.util.ArrayList;
 
-import com.et.TestViewPager.TestViewPagerActivity.MyPagerAdater;
+import com.et.TestViewPager.TestViewPagerActivity.FragmentPagerAdater;
 
 import android.content.Context;
 import android.graphics.Matrix.ScaleToFit;
