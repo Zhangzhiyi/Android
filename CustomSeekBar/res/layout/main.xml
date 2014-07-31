@@ -55,22 +55,21 @@
 		    android:minHeight="6dp" 
 		    android:paddingLeft="20dp"
 		    android:paddingRight="20dp"
-		    android:progressDrawable="@drawable/progress_horizontal_holo_dark"
-		    android:thumb="@drawable/preference_volume_thumb" />
+		     />
 
 		<SeekBar
 		    android:id="@+id/seekBar1"
 		    android:layout_width="250dp"
 		    android:layout_height="wrap_content"
 		    android:layout_marginLeft="20dp"
-		    android:maxHeight="6dp"
-		    android:minHeight="6dp" 
+		    android:maxHeight="10dp"
+		    android:minHeight="10dp" 
 		    android:paddingLeft="20dp"
 		    android:paddingRight="20dp"
 		    android:max="100"
 		    android:progress="100"
-		    android:thumb="@drawable/preference_volume_thumb"
-		    android:progressDrawable="@drawable/progress_horizontal"/>
+		    android:progressDrawable="@drawable/progress_horizontal"
+		    />
 
 	</LinearLayout>
 
