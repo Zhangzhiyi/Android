@@ -35,4 +35,5 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onWindowFocusChanged(hasFocus);
 	}
+	
 }

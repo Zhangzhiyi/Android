@@ -16,6 +16,11 @@
 				<action android:name="com.et.MyService"/>
 			</intent-filter>
 		</service>
+		<receiver android:name="SampleAlarmReceiver">
+			<intent-filter>
+				<action android:name="ACTION_ALARM_RECEIVER"/>
+			</intent-filter>
+		</receiver>
 	</application>
 	<uses-sdk android:minSdkVersion="3" />
 

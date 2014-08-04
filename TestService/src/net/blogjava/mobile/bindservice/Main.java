@@ -85,7 +85,6 @@ public class Main extends Activity implements OnClickListener
 				startService(serviceIntent);
 				break;
 			case R.id.btnStopService:
-				
 				stopService(serviceIntent);
 				break;
 			case R.id.btnBindService:
