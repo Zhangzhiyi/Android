@@ -12,20 +12,20 @@ public class MyApplication extends Application {
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
-		Log.i(TAG, "onCreate()");
 		super.onCreate();
+		Log.i(TAG, "onCreate()");
 	}
 	@Override
 	public void onLowMemory() {
 		// TODO Auto-generated method stub
-		Log.i(TAG, "onLowMemory()");
 		super.onLowMemory();
+		Log.i(TAG, "onLowMemory()");
 	}
 	@Override
 	public void onTerminate() {
 		// TODO Auto-generated method stub
-		Log.i(TAG, "onTerminate()");
 		super.onTerminate();
+		Log.i(TAG, "onTerminate()");
 	}
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {

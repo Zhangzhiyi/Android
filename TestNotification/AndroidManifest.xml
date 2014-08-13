@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.notification"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.notification.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.notification.OtherActivity"
+            android:label="@string/title_activity_other"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.notification.SpecialActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_activity_special"
+            android:launchMode="singleTask"
+            android:taskAffinity="" >
+        </activity>
+
+        <receiver android:name=".TestMusicControl" >
+            <intent-filter>
+                <action android:name="Test.Music.Control" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="MainActivity$DeleteNotificationReceiver"></receiver>
+    </application>
+
+</manifest>
