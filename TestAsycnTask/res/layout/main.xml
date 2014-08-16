@@ -3,11 +3,10 @@
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
-	<ProgressBar android:id="@+id/progress_bar"
-		android:layout_width="200.0dip" android:layout_height="wrap_content"
-		 android:layout_gravity="center"
-		android:max="100" style="?android:attr/progressBarStyleHorizontal"
-		android:progress="0">
-	</ProgressBar>
+	<ListView
+	    android:id="@+id/listView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
+	</ListView>
 
 </LinearLayout>

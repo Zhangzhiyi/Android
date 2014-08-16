@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements OnClickListener{
 					Message msg3 = Message.obtain();
 					msg3.what = 3;
 					msg3.obj = item;
-					mMainHandler.sendMessageDelayed(msg3, 5000);
+					mMainHandler.sendMessageDelayed(msg3, 1000);
 					item.i = 2;
 				}
 				else{
@@ -92,10 +92,10 @@ public class MainActivity extends Activity implements OnClickListener{
 				break;
 			case R.id.button3:
 				/**结论：可以取消在延迟时间内要发送的message,如果有多个同样的消息，会取消所有**/
-				mMainHandler.removeMessages(2);
-//				mMainHandler.sendEmptyMessage(2);
-				Data item = datas.get(0);
-				mMainHandler.removeMessages(3, item);
+//				mMainHandler.removeMessages(2);
+//				Data item = datas.get(0);
+//				mMainHandler.removeMessages(3, item);
+				mMainHandler.removeCallbacksAndMessages(null); // remove all messages
 				break;
 			case R.id.button5:
 				/**结论：当handler要延迟发送一个message的时候，在延迟时间内还没发送的时候判断是true;

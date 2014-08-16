@@ -1,20 +1,35 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.et.testapplication"
     android:versionCode="1"
-    android:versionName="1.0">
+    android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="15" />
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
 
-    <application android:label="@string/app_name"
+    <application
+        android:name="MyApplication"
         android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme" android:name="MyApplication">
-        <activity android:name="MainActivity">
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity android:name="MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <receiver android:name="MyInstalledReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_RESTARTED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

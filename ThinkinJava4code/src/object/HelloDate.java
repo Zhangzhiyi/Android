@@ -17,6 +17,26 @@ public class HelloDate {
   public static void main(String[] args) {
     System.out.println("Hello, it's: ");
     System.out.println(new Date());
+    A a = new A();
+    A b = a;
+    test(a);
+    a = null;
+    System.out.println(b);
+  }
+  public static void test(A a){
+	  a.setA(100);
+  }
+ public static class A{
+	  int a;
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
+	}
+	  
   }
 } /* Output: (55% match)
 Hello, it's:
