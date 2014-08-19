@@ -11,8 +11,8 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.et.Activity.TestActivity;
-import com.et.Activity.TestThread;
+import com.et.TestRemoteService.TestActivity;
+import com.et.TestRemoteService.TestThread;
 
 public class RemoteService extends Service {
 	

@@ -1,4 +1,4 @@
-package com.et.Activity;
+package com.et.TestRemoteService;
 
 import android.os.Parcel;
 import android.os.Parcelable;

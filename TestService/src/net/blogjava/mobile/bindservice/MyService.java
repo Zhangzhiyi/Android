@@ -21,6 +21,7 @@ public class MyService extends Service {
 	public static final int MSG_HANDLER_ONE = 1;
 	public static final int MSG_CANCEL_ALARM = 2;
 	public static final int MSG_ELAPSED_TIME = 3;
+	public static final int MSG_STOP_SERVICEID = 4;
 	private AlarmManager mAlarmManager;
 	private final class ServiceHandler extends Handler {
 		private int count = 0;
@@ -50,6 +51,11 @@ public class MyService extends Service {
 					Log.i(TAG, "" + i);
 				}
 				break;
+			case MSG_STOP_SERVICEID:
+				// Stop the service using the startId, so that we don't stop
+		          // the service in the middle of handling another job
+				stopSelf(msg.arg1);
+				break;
 			}
 		}
 	}
@@ -74,7 +80,7 @@ public class MyService extends Service {
 		thread.start();
 		mServiceLooper = thread.getLooper();
 		mServiceHandler = new ServiceHandler(mServiceLooper);
-		mServiceHandler.sendEmptyMessageDelayed(MSG_HANDLER_ONE, 3000);
+//		mServiceHandler.sendEmptyMessageDelayed(MSG_HANDLER_ONE, 3000);
 		/** 打印进程号,判断与服务是否在同一进程 **/
 		/** 因为没有在配置xml文件设定service的remote属性,所以就算这里有用binder也是在同一进程的 **/
 		int pid = Process.myPid();
@@ -101,7 +107,7 @@ public class MyService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// TODO Auto-generated method stub
 		// 重复调用startService，startId递增
-		Log.d(TAG, "onStart :" + startId);
+		Log.d(TAG, "onStartCommand :" + startId);
 		// 在设置-应用程序管理把当前的Service结束掉AlarmManager还会继续跑。
 		//目前用腾讯安全管家还有360卫士杀掉进程在某些机型上AlarmManager还是会继续跑如Nexus 5，而有些有不能跑了如三星9100。
 		// 如果在小米手机上如果应用的自动启动权限(只有MIUI系统才有这个权限)是关闭的话，用小米系统自带的清理工具杀掉当前应用进程那么AlarmManager是不会在后台运行的.
@@ -125,6 +131,7 @@ public class MyService extends Service {
 		
 //		mServiceHandler.sendEmptyMessage(MSG_ELAPSED_TIME);
 //		mServiceHandler.sendEmptyMessage(MSG_ELAPSED_TIME);
+		
 		return START_STICKY;
 	}
 

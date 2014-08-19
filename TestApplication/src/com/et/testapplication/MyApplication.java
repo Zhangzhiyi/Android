@@ -14,6 +14,9 @@ public class MyApplication extends Application {
 	String name = "ET";
 	
 	public static List<String> list = null;
+	/**
+	 * 一个组件附属所在进程刚开始创建运行的时候肯定会运行Application的onCreate()方法，所以多进程的时候会运行多次Application的onCreate方法，即有多个Application变量
+	 */
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub

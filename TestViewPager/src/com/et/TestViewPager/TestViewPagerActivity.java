@@ -266,5 +266,11 @@ public class TestViewPagerActivity extends FragmentActivity {
 			// TODO Auto-generated method stub
 			super.onActivityCreated(savedInstanceState);
 		}
+		@Override
+		public void onSaveInstanceState(Bundle outState) {
+			// TODO Auto-generated method stub
+			super.onSaveInstanceState(outState);
+			outState.putInt("num", getArguments().getInt("num"));
+		}
 	}
 }

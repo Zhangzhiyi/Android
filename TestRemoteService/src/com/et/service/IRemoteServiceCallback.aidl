@@ -1,7 +1,7 @@
 package com.et.service;
 
 import com.et.service.Product;
-import com.et.Activity.Book;
+import com.et.TestRemoteService.Book;
 interface IRemoteServiceCallback{
 
 	void valueChanged(int value);

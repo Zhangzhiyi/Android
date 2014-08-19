@@ -3,10 +3,11 @@ package com.et.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.et.Activity.Book;
-import com.et.Activity.TestActivity;
-import com.et.Activity.TestCallbackThread;
-import com.et.Activity.TestThread;
+import com.et.TestRemoteService.Book;
+import com.et.TestRemoteService.TestActivity;
+import com.et.TestRemoteService.TestCallbackThread;
+import com.et.TestRemoteService.TestThread;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
