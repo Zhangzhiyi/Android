@@ -19,6 +19,10 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        //如果在AndroidManifest不声明这个<uses-sdk android:minSdkVersion="9" android:targetSdkVersion="18" />，获取到的DisplayMetrics对象的分辨率是不正确的
+        DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         float density = displayMetrics.density;
         float dip = getResources().getDimension(R.dimen.dip);

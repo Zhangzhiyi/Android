@@ -1,5 +1,6 @@
 package com.et.asycntask;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -36,6 +37,7 @@ public class MainActivity extends Activity {
 	//继承于AsyncTask
 	public static class SimpleAsyncTask extends AsyncTask<Void, Integer, Integer>{
 		private ViewHolder mViewHolder;
+		private WeakReference<ProgressBar> mReference;
 		private int value;
 		public SimpleAsyncTask(ViewHolder viewHolder) {
 			// TODO Auto-generated constructor stub

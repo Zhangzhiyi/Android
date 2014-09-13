@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener{
 	
+	public static final String TAG = "MainActivity";
 	private Button button1;
 	private Button button2;
 	private Button button3;
@@ -97,6 +98,9 @@ public class MainActivity extends Activity implements OnClickListener{
 //				mMainHandler.removeMessages(3, item);
 				mMainHandler.removeCallbacksAndMessages(null); // remove all messages
 				break;
+			case R.id.button4:
+				mMainHandler.sendEmptyMessage(4);
+				break;
 			case R.id.button5:
 				/**结论：当handler要延迟发送一个message的时候，在延迟时间内还没发送的时候判断是true;
 				 * 		 当handler已经发送出去的message，判断就为false;
@@ -118,6 +122,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		}
 	}
 	class MainHandler extends Handler{
+		int count = 0;
 		public MainHandler(Looper looper){
 			super(looper);
 		}
@@ -137,7 +142,14 @@ public class MainActivity extends Activity implements OnClickListener{
 					Data data = (Data) msg.obj;
 					button4.setText(String.valueOf(delayMsgCount));
 					break;
-				
+				case 4:
+					count ++;
+					int i = 0;
+					while (i < 10000) {
+						Log.i(TAG + ":" + count, "" + i);
+						i ++;
+					}
+					break;
 			}
 		}
 	}

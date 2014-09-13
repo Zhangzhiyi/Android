@@ -1,20 +1,38 @@
 package com.et.main;
+import com.et.testactivity.R;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 
 public class MainActivity extends Activity {
 	public static final String TAG = "MainActivity";
+	private Button mFirstBtn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
+		setContentView(R.layout.main_layout);
 		
+		mFirstBtn = (Button) findViewById(R.id.first_button);
+		mFirstBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this, FirstActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 	@Override
-	protected void onStart() {
+	protected void onStart() { 
 		// TODO Auto-generated method stub
 		super.onStart();
 		Log.i(TAG, "onStart");

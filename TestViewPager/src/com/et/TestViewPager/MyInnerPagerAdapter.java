@@ -19,7 +19,7 @@ import android.widget.ImageView.ScaleType;
 
 public class MyInnerPagerAdapter extends PagerAdapter {
 
-	private final static String TAG = "MyPagerAdater";
+	private final static String TAG = "MyInnerPagerAdapter";
 	ArrayList<Integer> drawables;
 	Context context;
 	public MyInnerPagerAdapter(Context context, ArrayList<Integer> drawables) {
@@ -37,7 +37,7 @@ public class MyInnerPagerAdapter extends PagerAdapter {
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 		// TODO Auto-generated method stub
-		Log.i(TAG, "instantiateItem");
+		Log.i(TAG, "instantiateItem:" + position);
 		ImageView imageView = new ImageView(context);
 		imageView.setScaleType(ScaleType.FIT_XY);
 		ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -73,7 +73,7 @@ public class MyInnerPagerAdapter extends PagerAdapter {
 	public void destroyItem(ViewGroup container, int position, Object object) {
 		// TODO Auto-generated method stub
 		container.removeView((View) object);
-		Log.i(TAG, "destroyItem");
+		Log.i(TAG, "destroyItem:" + position);
 	}
 
 }

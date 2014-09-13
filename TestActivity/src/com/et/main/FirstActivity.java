@@ -2,6 +2,7 @@ package com.et.main;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 
 public class FirstActivity extends Activity {
@@ -11,7 +12,10 @@ public class FirstActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
-		
+		 TextView label = new TextView(this);
+		  label.setText("Leaks are bad");
+		  
+		  setContentView(label);
 	}
 	@Override
 	protected void onStart() {

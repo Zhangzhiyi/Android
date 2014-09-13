@@ -32,7 +32,7 @@ public class ViewPagerAdater extends PagerAdapter {
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 		// TODO Auto-generated method stub
-		Log.i(TAG, "instantiateItem");
+		Log.i(TAG, "instantiateItem:" + position);
 		LinearLayout layout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.innerpager_item_layout, null);
 //		ImageView imageView = (ImageView) layout.findViewById(R.id.imageView1);
 //		imageView.setImageResource(drawables.get(position%drawables.size()));

@@ -3,6 +3,7 @@ package com.et.testapplication;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Process;
 import android.util.Log;
 
 public class MyInstalledReceiver extends BroadcastReceiver {
@@ -11,6 +12,7 @@ public class MyInstalledReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
+		Log.i(TAG, "MyInstalledReceiver:" + Process.myPid());
 		String packageName = intent.getData().getEncodedSchemeSpecificPart();
 		String action = intent.getAction();
 		if (action.equals(Intent.ACTION_PACKAGE_ADDED)) {
@@ -21,6 +23,9 @@ public class MyInstalledReceiver extends BroadcastReceiver {
 			Log.i(TAG, "ACTION_PACKAGE_REPLACED:" + packageName);
 		} else if (action.equals(Intent.ACTION_PACKAGE_RESTARTED)) {
 			Log.i(TAG, "ACTION_PACKAGE_RESTARTED:" + packageName);
+		} 
+		if(action.equals(Intent.ACTION_PACKAGE_INSTALL)){
+			Log.i(TAG, "ACTION_PACKAGE_INSTALL:" + packageName);
 		}
 	}
 }

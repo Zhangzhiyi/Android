@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="MyInstalledReceiver" >
+        <receiver android:name="MyInstalledReceiver"  android:process=":remote">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
@@ -30,6 +30,8 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+        <service android:name="ServiceA" android:process=":ServiceA"></service>
+        <service android:name="ServiceB"></service>
     </application>
 
 </manifest>

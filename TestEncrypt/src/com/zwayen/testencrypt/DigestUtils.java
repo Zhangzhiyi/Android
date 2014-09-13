@@ -1,4 +1,4 @@
-package com.et.testapplication;
+package com.zwayen.testencrypt;
 
 import java.security.MessageDigest;
 
