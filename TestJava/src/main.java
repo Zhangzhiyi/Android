@@ -52,6 +52,17 @@ public class main {
 		
 		String itemId = packageName.substring(Theme_NAME_PREFIX.length());
 		itemId = Theme_NAME_PREFIX + itemId;
+		String a = subFileNameFromUrl("http://9apps.dev2.g.uc.cn:18027/downStat/group1/M00/00/1D/oYYBAFQRSe2APa4JACXMKcHLrjk417.apk?pid=655");
+		String b = subFileNameFromUrl("http://9apps.dev2.g.uc.cn:18027/downStat/group1/M00/00/1D/oYYBAFQRSe2APa4JACXMKcHLrjk417.apk");
+	}
+	public static String subFileNameFromUrl(String url){
+		int last1 = url.lastIndexOf("/");
+		int last2 = url.lastIndexOf("?");
+		if (last2 == -1) {
+			return url.substring(last1 + 1);
+		}else{
+			return url.substring(last1 + 1, last2);
+		}
 	}
 	public static class Data{
 		

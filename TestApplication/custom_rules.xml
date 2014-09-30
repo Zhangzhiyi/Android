@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MainActivity" default="parseXml">
+	<property name="variable1" value="123"/>
+	<target name="test">
+	    <tstamp>
+    	<format property="time" pattern="yyyyMMddHHmm" />
+  </tstamp>
+		<echo>variable1=${variable1} ${time}</echo>
+	</target>
+	
+	<target name="parseXml">
+	    <xmlproperty file="AndroidManifest.xml" prefix="themanifest" collapseAttributes="true" />
+	    <echo>versionCode:${themanifest.manifest.android:versionCode} versionName:${themanifest.manifest.android:versionName}</echo>
+	</target>
+</project>

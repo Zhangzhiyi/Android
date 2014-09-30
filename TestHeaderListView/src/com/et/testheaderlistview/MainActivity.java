@@ -1,5 +1,9 @@
 package com.et.testheaderlistview;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -26,7 +30,6 @@ public class MainActivity extends Activity {
 	private LinearLayout linearLayout;
 	private LinearLayout headerLayout;
 	private CustomScrollLayout customScrollLayout;
-	public int dataSize = 20;
 	int[] drawables = { R.drawable.drawable1, R.drawable.drawable2, R.drawable.drawable3 };
 
 	int startX;
@@ -39,7 +42,8 @@ public class MainActivity extends Activity {
 	boolean isIntercept2;
 
 	public ScrollView mScrollView;
-
+	
+	public List<AppInfo> lists = new ArrayList<AppInfo>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -50,6 +54,10 @@ public class MainActivity extends Activity {
 		linearLayout = (LinearLayout) findViewById(R.id.linearLaout1);
 		listView = (ListView) findViewById(R.id.listView1);
 		MyAdapter myAdapter = new MyAdapter(this);
+		for (int i = 0; i < 30; i++) {
+			lists.add(new AppInfo());
+		}
+		myAdapter.setData(lists);
 		headerLayout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.scroll_layout, null);
 		customScrollLayout = (CustomScrollLayout) headerLayout.findViewById(R.id.customScrollLayout);
 		mScrollView = (ScrollView) headerLayout.findViewById(R.id.scrollView1);
@@ -60,7 +68,6 @@ public class MainActivity extends Activity {
 			customScrollLayout.addView(mImageView);
 		}
 		listView.addHeaderView(headerLayout);
-		// linearLayout.addView(layout, 0);
 		listView.setAdapter(myAdapter);
 		customScrollLayout.setOnTouchListener(new OnTouchListener() {
 
@@ -137,19 +144,24 @@ public class MainActivity extends Activity {
 		});
 	}
 
-	class MyAdapter extends BaseAdapter {
+	public static class MyAdapter extends BaseAdapter {
 
 		Context context;
-
+		public List<AppInfo> lists;
 		public MyAdapter(Context context) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 		}
-
+		public void setData(List<AppInfo> lists){
+			this.lists = lists;
+		}
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return dataSize;
+			if (lists != null) {
+				return lists.size();
+			}
+			return 0;
 		}
 
 		@Override
@@ -181,11 +193,11 @@ public class MainActivity extends Activity {
 			viewHolder.textView2.setText("Finished in 1 Min 54 Secs, 70 Moves! ");
 			return convertView;
 		}
-
+		private static class ViewHolder {
+			TextView textView1;
+			TextView textView2;
+		}
 	}
 
-	private class ViewHolder {
-		TextView textView1;
-		TextView textView2;
-	}
+	
 }

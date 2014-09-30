@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -26,7 +27,7 @@ import android.widget.ListView;
 public class TestViewPagerActivity extends FragmentActivity {
 
 	public static final String TAG = "TestViewPagerActivity";
-	ViewPager mViewPager;
+	public ViewPager mViewPager;
 	FragmentPagerAdater pagerAdater;
 	PagerTabStrip pagerTabStrip;
 
@@ -172,7 +173,10 @@ public class TestViewPagerActivity extends FragmentActivity {
 		}
 
 	}
-
+	
+	public void setViewPagerRequestDisallowInterceptTouchEvent(boolean flag){
+		mViewPager.requestDisallowInterceptTouchEvent(flag);
+	}
 	public static class ArrayListFragment extends Fragment {
 		static ArrayListFragment newInstance(int num) {
 			ArrayListFragment f = new ArrayListFragment();
@@ -236,6 +240,14 @@ public class TestViewPagerActivity extends FragmentActivity {
 			listView.addHeaderView(headerView);
 			listView.setAdapter(listdapter);
 			
+			headViewPager.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Log.i(TAG, "headViewPager:onClick");
+				}
+			});
 			headViewPager.setOnTouchListener(new OnTouchListener() {
 
 				@Override
@@ -244,12 +256,14 @@ public class TestViewPagerActivity extends FragmentActivity {
 					switch (event.getAction()) {
 					case MotionEvent.ACTION_DOWN:
 						Log.i(TAG , "Banner + ListView:" + "MotionEvent.ACTION_DOWN");
+						((TestViewPagerActivity)getActivity()).setViewPagerRequestDisallowInterceptTouchEvent(true);
 						return false;
 					case MotionEvent.ACTION_MOVE:
 						Log.i(TAG, "Banner + ListView:" + "MotionEvent.ACTION_MOVE");
 						break;
 					case MotionEvent.ACTION_UP:
 						Log.i(TAG, "Banner + ListView:" + "MotionEvent.ACTION_UP");
+						((TestViewPagerActivity)getActivity()).setViewPagerRequestDisallowInterceptTouchEvent(false);
 						return false;
 					case MotionEvent.ACTION_CANCEL:
 						Log.i(TAG, "Banner + ListView:" + "MotionEvent.ACTION_CANCEL");

@@ -75,7 +75,27 @@ public class Main extends Activity implements OnClickListener
 
 		}
 	};
+	
+	private ServiceConnection serviceConnection2 = new ServiceConnection()
+	{
 
+		@Override
+		public void onServiceDisconnected(ComponentName name)
+		{
+			myService = null;
+			Toast.makeText(Main.this, "Service Failed2.", Toast.LENGTH_LONG)
+					.show();
+		}
+
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service)
+		{
+			myService = ((MyService.MyBinder) service).getService();
+			Toast.makeText(Main.this, "Service Connected2.", Toast.LENGTH_LONG)
+					.show();
+
+		}
+	};
 	@Override
 	public void onClick(View view)
 	{
@@ -91,9 +111,12 @@ public class Main extends Activity implements OnClickListener
 				
 				bindService(serviceIntent, serviceConnection,
 						Context.BIND_AUTO_CREATE);
+				bindService(serviceIntent, serviceConnection2,
+						Context.BIND_AUTO_CREATE);
 				break;
 			case R.id.btnUnbindService:
-				unbindService(serviceConnection);
+				unbindService(serviceConnection); //如果Service没有其他绑定的客户端，那么调用unbindService的时候Service会被销毁
+				unbindService(serviceConnection2);
 				break;
 			case R.id.callback:
 				/**要先绑定服务获取MyService实例才能调用MyService里面的方法**/
