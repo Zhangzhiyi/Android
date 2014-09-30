@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="MainActivity" default="parseXml">
+    <property file="local.properties" />
+    <!-- jar file from where the tasks are loaded -->
+    <path id="android.antlibs">
+        <pathelement path="${sdk.dir}/tools/lib/ant-tasks.jar" />
+    </path>
+
+    <!-- Custom tasks -->
+    <taskdef resource="anttasks.properties" classpathref="android.antlibs" />
+    
 	<property name="variable1" value="123"/>
 	<target name="test">
 	    <tstamp>
@@ -11,5 +20,10 @@
 	<target name="parseXml">
 	    <xmlproperty file="AndroidManifest.xml" prefix="themanifest" collapseAttributes="true" />
 	    <echo>versionCode:${themanifest.manifest.android:versionCode} versionName:${themanifest.manifest.android:versionName}</echo>
+	    
+	    <xpath input="AndroidManifest.xml" expression="/manifest/@package" output="project.app.package" />
+	    <echo>package:${project.app.package}</echo>
 	</target>
+	
+	
 </project>
