@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="MainActivity" default="parseXml">
+<project name="MainActivity" default="exec">
     <property file="local.properties" />
     <!-- jar file from where the tasks are loaded -->
     <path id="android.antlibs">
@@ -25,5 +25,10 @@
 	    <echo>package:${project.app.package}</echo>
 	</target>
 	
-	
+	<target name="exec">
+		<exec executable="cmd"  failonerror="false" resultproperty="resultproperty"  errorproperty="errorproperty" outputproperty="outputproperty">
+            		<arg line="/c hg log" />
+        		</exec>
+        	<echo>resultproperty:${resultproperty}		outputproperty:${outputproperty}			errorproperty:${errorproperty}</echo>
+	</target>
 </project>
