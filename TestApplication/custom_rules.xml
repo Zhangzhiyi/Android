@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="MainActivity" default="exec">
+<project name="Custom" default="exec">
     <property file="local.properties" />
     <!-- jar file from where the tasks are loaded -->
     <path id="android.antlibs">
@@ -25,10 +25,28 @@
 	    <echo>package:${project.app.package}</echo>
 	</target>
 	
+	<target name="updateAddress">
+	    <replaceregexp encoding="utf-8" file="res/values/strings.xml" match='&lt;string name="uc_serv"&gt;.*&lt;/string&gt;' replace='&lt;string name="uc_serv"&gt;www.baidu.com&lt;/string&gt;'  byline="false" />
+	</target>
+	
 	<target name="exec">
 		<exec executable="cmd"  failonerror="false" resultproperty="resultproperty"  errorproperty="errorproperty" outputproperty="outputproperty">
+		    		<!-- <env key="PATH" path="${sdk.dir}/platform-tools"/> -->
             		<arg line="/c hg log" />
         		</exec>
         	<echo>resultproperty:${resultproperty}		outputproperty:${outputproperty}			errorproperty:${errorproperty}</echo>
+        	<if>
+        		<condition>
+        		<!-- <isset property="errorproperty"></isset> -->
+        		<equals arg1="${errorproperty}" arg2=""/> 
+        		</condition>
+        		<then>
+        			<echo>build success</echo>
+        		</then>
+        		<else>
+   			<echo>build fail</echo>
+ 		</else>
+ 		
+        	</if>
 	</target>
 </project>

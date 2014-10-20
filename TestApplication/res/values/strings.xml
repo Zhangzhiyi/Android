@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestApplication</string>
+    
+    <!-- 打包平台的服务器地址配置替换项 -->
+   <string name="uc_serv">www.baidu.com</string> 
+   <!--  <string name="uc_serv">9apps.dev2.g.uc.cn:18027</string>  -->
+	<!-- <string name="uc_serv">9apps.dev2.g.uc.cn:18003</string>    
+  	<string name="uc_new_serv">9apps.dev2.g.uc.cn:18010</string> -->
 </resources>
