@@ -2,6 +2,7 @@ package net.blogjava.mobile.bindservice;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +39,7 @@ public class MyService extends Service {
 				mServiceHandler.sendEmptyMessageDelayed(MSG_HANDLER_ONE, 1000);
 				break;
 			case MSG_CANCEL_ALARM:
+				
 				Intent receiver = new Intent(MyService.this, SampleAlarmReceiver.class);
 				receiver.setAction(SampleAlarmReceiver.ACTION_ALARM_RECEIVER);
 				PendingIntent alarmIntent = PendingIntent.getBroadcast(MyService.this, 0, receiver, 0);
@@ -118,7 +120,7 @@ public class MyService extends Service {
 		PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, receiver, PendingIntent.FLAG_NO_CREATE);
 		if (alarmIntent == null) {
 			Log.i(TAG, "Alarm now create!");
-			alarmIntent = PendingIntent.getBroadcast(this, 0, receiver, 0);
+			alarmIntent = PendingIntent.getBroadcast(this, 0, receiver, PendingIntent.FLAG_UPDATE_CURRENT);
 			mAlarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, 1000, 1000, alarmIntent);
 //			mAlarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 5000, alarmIntent);
 		}else{
@@ -126,8 +128,32 @@ public class MyService extends Service {
 		}
 		//第二个参数requestCode来唯一标识每一个PendingIntent.
 		PendingIntent alarmIntent2 = PendingIntent.getBroadcast(this, 1, receiver, PendingIntent.FLAG_NO_CREATE); //alarmIntent2 = null
+		if (alarmIntent2 == null) {
+			alarmIntent2 = PendingIntent.getBroadcast(this, 1, receiver, PendingIntent.FLAG_UPDATE_CURRENT);
+			mAlarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, alarmIntent2);
+//			try {
+//				alarmIntent2.send();
+//			} catch (CanceledException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+		}
+		mServiceHandler.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				//检测PendingIntent发送之后alarmIntent是否为null
+				Intent receiver = new Intent(SampleAlarmReceiver.ACTION_ALARM_RECEIVER);
+				PendingIntent alarmIntent = PendingIntent.getBroadcast(MyService.this, 1, receiver, PendingIntent.FLAG_NO_CREATE); //alarmIntent发送不为null
+				if (alarmIntent != null) {
+					
+				}
+			}
+		}, 5000);
+		
 		//10秒发消息取消此AlarmManager服务
-//		mServiceHandler.sendEmptyMessageDelayed(MSG_CANCEL_ALARM, 10000);
+//		mServiceHandler.sendEmptyMessageDelayed(MSG_CANCEL_ALARM, 5000);
 		
 //		mServiceHandler.sendEmptyMessage(MSG_ELAPSED_TIME);
 //		mServiceHandler.sendEmptyMessage(MSG_ELAPSED_TIME);

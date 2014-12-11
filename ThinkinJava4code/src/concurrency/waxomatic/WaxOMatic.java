@@ -9,10 +9,12 @@ class Car {
   public synchronized void waxed() {
     waxOn = true; // Ready to buff
     notifyAll();
+    System.out.println("waxed:notifyAll");
   }
   public synchronized void buffed() {
     waxOn = false; // Ready for another coat of wax
     notifyAll();
+    System.out.println("buffed:notifyAll");
   }
   public synchronized void waitForWaxing()
   throws InterruptedException {

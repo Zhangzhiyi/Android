@@ -1,4 +1,6 @@
 package com.et.main;
+import java.util.concurrent.TimeUnit;
+
 import com.et.testactivity.R;
 
 import android.app.Activity;
@@ -17,11 +19,13 @@ public class MainActivity extends Activity {
 	private Button mFirstBtn;
 	
 	static Object object ;
+	
+	static TestStatic mTestStatic = TestStatic.getInstance();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		object = FirstActivity.object;
+//		object = FirstActivity.object;
 		Log.i(TAG, "onCreate");
 		setContentView(R.layout.main_layout);
 		
@@ -31,10 +35,36 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(MainActivity.this, FirstActivity.class);
-				startActivity(intent);
+//				Intent intent = new Intent(MainActivity.this, FirstActivity.class);
+//				startActivity(intent);
+				Intent intent = new Intent("com.action.auto_start");
+				intent.setClassName("com.et.testapplication", "com.et.testapplication.AutoStartReceiver");
+				intent.addFlags(32);
+				sendBroadcast(intent);
 			}
 		});
+		mTestStatic.startActivityLoop();
+		startService(new Intent(this, TestService.class));
+//		mTestStatic.startLoop();
+		
+//		new Thread(new Runnable() {
+//			
+//			@Override
+//			public void run() {
+//				// TODO Auto-generated method stub
+//				int count = 0;
+//				while (true) {
+//					count ++;
+//					Log.i(TAG, "" + count);
+//					try {
+//						TimeUnit.SECONDS.sleep(1);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
+//			}
+//		}).start();
 	}
 	@Override
 	protected void onStart() { 

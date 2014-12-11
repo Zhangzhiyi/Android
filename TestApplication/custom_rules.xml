@@ -30,7 +30,7 @@
 	</target>
 	
 	<target name="exec">
-		<exec executable="cmd"  failonerror="false" resultproperty="resultproperty"  errorproperty="errorproperty" outputproperty="outputproperty">
+		<exec executable="cmd"  failonerror="true" resultproperty="resultproperty"  errorproperty="errorproperty" outputproperty="outputproperty">
 		    		<!-- <env key="PATH" path="${sdk.dir}/platform-tools"/> -->
             		<arg line="/c hg log" />
         		</exec>
@@ -48,5 +48,19 @@
  		</else>
  		
         	</if>
+	</target>
+	<target name="condition_not">
+        		<if>
+        			<condition>
+        				<not>
+        				    <!-- 只有设置了need_guide并且为true，条件为真，其他为假 -->
+							<istrue value="${need_guide}"></istrue>
+						</not>
+			</condition>
+	            	<then>
+	            		<echo>>>>>>>>>>>>>>>false>>>>>>>>>>>>></echo>
+	            	</then>
+	            	<else><echo>>>>>>>>>>>>>>>true>>>>>>>>>>>>></echo></else>
+	        	</if>
 	</target>
 </project>

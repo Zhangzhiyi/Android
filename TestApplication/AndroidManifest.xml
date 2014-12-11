@@ -21,14 +21,12 @@
         </activity>
 
         <receiver
-            android:name="MyInstalledReceiver"
-            android:process=":remote" >
+            android:name="MyInstalledReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.PACKAGE_RESTARTED" />
-
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
@@ -39,6 +37,11 @@
         </service>
         <service android:name="ServiceB" >
         </service>
+        <receiver android:name="AutoStartReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="com.action.auto_start"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

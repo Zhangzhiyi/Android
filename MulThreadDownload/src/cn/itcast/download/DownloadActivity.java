@@ -66,7 +66,7 @@ public class DownloadActivity extends Activity {
 				}
 			}
 		});
-        NetWorkClient.sendGetHttpRequest("http://cache.3g.cn/software/pkmahjong/mahjong_v1.3.5.2.apk");
+//        NetWorkClient.sendGetHttpRequest("http://gdown.baidu.com/data/wisegame/f243ddd66f7ab659/FruitNinja_1913.apk");
     }
     //对于UI控件的更新只能由主线程(UI线程)负责，如果在非UI线程更新UI控件，更新的结果不会反映在屏幕上，某些控件还会出错
     private void download(final String path, final File dir){

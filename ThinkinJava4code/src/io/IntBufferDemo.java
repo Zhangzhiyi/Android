@@ -6,21 +6,33 @@ import java.nio.*;
 public class IntBufferDemo {
   private static final int BSIZE = 1024;
   public static void main(String[] args) {
+	 ByteBuffer aa = ByteBuffer.allocate(BSIZE);
+	 aa.put((byte) 1);
+	 int remain = aa.remaining();
     ByteBuffer bb = ByteBuffer.allocate(BSIZE);
     IntBuffer ib = bb.asIntBuffer();
     // Store an array of int:
     ib.put(new int[]{ 11, 42, 47, 99, 143, 811, 1016 });
     // Absolute location read and write:
-    System.out.println(ib.get(3));
+//    System.out.println(ib.get(3));
     ib.put(3, 1811);
     // Setting a new limit before rewinding the buffer.
     ib.flip();
+    IntBuffer copy = ib.duplicate();
+    IntBuffer slice = ib.slice();
+    slice.put(2, 9999);
     while(ib.hasRemaining()) {
       int i = ib.get();
       System.out.println(i);
     }
+    System.out.println("------------------------------------");
+    while(copy.hasRemaining()) {
+        int i = copy.get();
+        System.out.println(i);
+      }
   }
-} /* Output:
+}
+/* Output:
 99
 11
 42
