@@ -35,8 +35,6 @@ public class MainActivity extends Activity {
 				if(action == MotionEvent.ACTION_DOWN){
 					downX = (int) event.getX();
 					flag = true;
-					/**为什么这里返回false时Move事件还能响应？  为什么返回true时HorizontalScrollView不滚动了？
-					 * 没道理啊？？？？？？？？？？？？**/
 					return false;
 				}
 				if(action == MotionEvent.ACTION_MOVE){

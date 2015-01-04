@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="guidebar_btn_text_color">#a1a9b0</color>
+    <color name="guidebar_home_color">#ccd4e0</color>
+    <color name="guidebar_apps_color">#6dd451</color>
+    <color name="guidebar_games_color">#f7c244</color>
+    <color name="guidebar_music_color">#fc6da3</color>
+    <color name="guidebar_wallpapers_color">#64a1fe</color>
+    <color name="guidebar_ringtones_color">#b872f9</color>
+    <color name="guidebar_video_color">#48d6c7</color>
+</resources>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp" 
+        android:id="@+id/guidebar_parent">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:scaleType="centerCrop"
+            android:src="@drawable/toolbar_bg" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/demo_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Button" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/guidebar_height"
+            android:id="@+id/guidebar_layout"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:orientation="horizontal" >
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:id="@+id/scroll_Linearlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/ic_home_btn"
+                        style="@style/guidebar_btn"
+                        android:background="@drawable/guidebar_home_bg_selector"
+                        android:drawableTop="@drawable/guidebar_home_selector"
+                        android:text="HOME" />
+
+                    <Button
+                        android:id="@+id/ic_apps_btn"
+                        style="@style/guidebar_btn"
+                        android:background="@drawable/guidebar_apps_bg_selector"
+                        android:drawableTop="@drawable/guidebar_apps_selector"
+                        android:text="APPS" />
+
+                    <Button
+                        android:id="@+id/ic_games_btn"
+                        style="@style/guidebar_btn"
+                        android:background="@drawable/guidebar_games_bg_selector"
+                        android:drawableTop="@drawable/guidebar_games_selector"
+                        android:text="GAMES" />
+
+                    <Button
+                        android:id="@+id/ic_music_btn"
+                        style="@style/guidebar_btn"
+                        android:background="@drawable/guidebar_music_bg_selector"
+                        android:drawableTop="@drawable/guidebar_music_selector"
+                        android:text="MUSIC" />
+
+                    <Button
+                        android:id="@+id/ic_wallpapers_btn"
+                        style="@style/guidebar_btn"
+                        android:background="@drawable/guidebar_wallpapers_bg_selector"
+                        android:drawableTop="@drawable/guidebar_wallpapers_selector"
+                        android:text="WALLPAPERS" />
+
+                    <Button
+                        android:id="@+id/ic_ringtones_btn"
+                        style="@style/guidebar_btn"
+                        android:background="@drawable/guidebar_ringtones_bg_selector"
+                        android:drawableTop="@drawable/guidebar_ringtones_selector"
+                        android:text="RINGTONES" />
+
+                    <Button
+                        android:id="@+id/ic_video_btn"
+                        style="@style/guidebar_btn"
+                        android:background="@drawable/guidebar_video_bg_selector"
+                        android:drawableTop="@drawable/guidebar_video_selector"
+                        android:text="VIDEO" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/horizontalScrollView1"
+                android:layout_toRightOf="@+id/horizontalScrollView1"
+                android:scaleType="fitXY"
+                android:src="@drawable/guidebar_line" />
+
+            <LinearLayout
+                android:layout_width="@dimen/guidebar_right_section"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:id="@+id/ic_download_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/guidebar_download" />
+
+                <ImageButton
+                    android:id="@+id/ic_search_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/guidebar_search" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
