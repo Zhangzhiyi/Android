@@ -17,21 +17,22 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.MediaController;
-import android.widget.MediaController.MediaPlayerControl;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
-import android.widget.VideoView;
 
-public class MainActivity extends Activity implements MediaPlayerControl {
+public class MainActivity extends Activity implements VideoControllerView.MediaPlayerControl  {
 
 	public static final String TAG = "MainActivity";
 	private SurfaceView mSurfaceView;
 	private SurfaceHolder mSurfaceHolder = null;
 	private MediaPlayer mMediaPlayer = null;
-	private MediaController mMediaController;
+	private VideoControllerView mMediaController;
 	private Uri mUri;
 	private Map<String, String> mHeaders;
 	// all possible internal states
@@ -55,15 +56,13 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 
 	private int mSeekWhenPrepared;
 
-	private Button mPlayBtn;
-	private Button mFullscreenBtn;
-	private VideoView mVideoView;
-
+	private boolean isFullScreen;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main);
 
 		final String path = Environment.getExternalStorageDirectory() + File.separator + "Wonders_of_Nature.mp4";
@@ -73,36 +72,8 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 
 			return;
 		} else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-			mVideoView = (VideoView) findViewById(R.id.videoView1);
-			mVideoView.setMediaController(new MediaController(this));
-			mVideoView.setVideoPath(path);
-			mVideoView.seekTo(1);
-			mVideoView.start();
 
 		}
-		mPlayBtn = (Button) findViewById(R.id.button1);
-		mFullscreenBtn = (Button) findViewById(R.id.button2);
-		mFullscreenBtn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				int orientation = getRequestedOrientation();
-				if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT || orientation == ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
-					setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-				} else if (orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-					setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-				}
-			}
-		});
-		mPlayBtn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-			}
-		});
 		mSurfaceView = (SurfaceView) findViewById(R.id.surfaceView1);
 		mSurfaceView.setOnTouchListener(new OnTouchListener() {
 
@@ -118,7 +89,7 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 
 		initVideoView();
 
-		setMediaController(new MediaController(this));
+		setMediaController(new VideoControllerView(this));
 		setVideoURI(Uri.fromFile(new File(path)), null);
 		seekTo(1);
 	}
@@ -412,7 +383,6 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 		return true;
 	}
 
-	@Override
 	public int getAudioSessionId() {
 		// TODO Auto-generated method stub
 		if (mAudioSession == 0) {
@@ -433,7 +403,7 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 		}
 	}
 
-	public void setMediaController(MediaController controller) {
+	public void setMediaController(VideoControllerView controller) {
 		if (mMediaController != null) {
 			mMediaController.hide();
 		}
@@ -446,7 +416,7 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 			mMediaController.setMediaPlayer(this);
 			// View anchorView = this.getParent() instanceof View ? (View)
 			// this.getParent() : this;
-			View anchorView = mSurfaceView;
+			ViewGroup anchorView = (ViewGroup) mSurfaceView.getParent();
 			mMediaController.setAnchorView(anchorView);
 			mMediaController.setEnabled(isInPlaybackState());
 		}
@@ -499,8 +469,25 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 		// Checks the orientation of the screen
 		if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			FrameLayout.LayoutParams params = (android.widget.FrameLayout.LayoutParams) mSurfaceView.getLayoutParams();
+			params.width = LayoutParams.MATCH_PARENT;
+			params.height = LayoutParams.MATCH_PARENT;
+			mSurfaceView.setLayoutParams(params);
+			mSurfaceView.getHolder().setFixedSize(mVideoWidth, mVideoHeight);
+			
+			isFullScreen = true;
 		} else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
 			Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+			FrameLayout.LayoutParams params = (android.widget.FrameLayout.LayoutParams) mSurfaceView.getLayoutParams();
+			params.width = LayoutParams.MATCH_PARENT;
+			params.height = (int) (getResources().getDisplayMetrics().density * 160);
+			mSurfaceView.setLayoutParams(params);
+			mSurfaceView.getHolder().setFixedSize(mVideoWidth, params.height);
+			
+			isFullScreen = false;
 		}
 	}
 
@@ -509,5 +496,22 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		Log.i(TAG, "onDestroy");
+	}
+
+	@Override
+	public boolean isFullScreen() {
+		// TODO Auto-generated method stub
+		return isFullScreen;
+	}
+
+	@Override
+	public void toggleFullScreen() {
+		// TODO Auto-generated method stub
+		int orientation = getRequestedOrientation();
+		if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT || orientation == ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		} else if (orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		}
 	}
 }
