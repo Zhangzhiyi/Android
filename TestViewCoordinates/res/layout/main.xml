@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     >
 <Button android:text="计算状态栏标题栏高度" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-<Button android:text="Button2" android:id="@+id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+<Button android:text="Button2" android:id="@+id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp"></Button>
 <Button android:text="Button3" android:id="@+id/button3" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
 <TextView android:text="TextView" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 </LinearLayout>

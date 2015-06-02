@@ -88,9 +88,11 @@ public class MainActivity extends Activity implements VideoControllerView.MediaP
 		});
 
 		initVideoView();
-
+		
+		
 		setMediaController(new VideoControllerView(this));
-		setVideoURI(Uri.fromFile(new File(path)), null);
+//		setVideoURI(Uri.fromFile(new File(path)), null);
+		setVideoURI(Uri.parse("http://mrpopat.in/embed.php?id=50018&wth=320&hgt=240"), null);
 		seekTo(1);
 	}
 

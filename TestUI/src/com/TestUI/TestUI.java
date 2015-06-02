@@ -10,17 +10,22 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.format.Time;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -51,6 +56,21 @@ public class TestUI extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.main);
+		ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+		int memoryClass = activityManager.getMemoryClass();
+		Runtime rt = Runtime.getRuntime();
+		long maxMemory = rt.maxMemory();
+		TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		String imei = telephonyManager.getDeviceId();
+		String imsi = telephonyManager.getSubscriberId();
+		String androidId = Settings.Secure.getString(getContentResolver(), "android_id");
+		int phoneType = telephonyManager.getPhoneType();
+		String networkName = telephonyManager.getNetworkOperatorName();
+		int networkType = telephonyManager.getNetworkType();
+		String manufacturer = Build.MANUFACTURER;
+		String brand = Build.BRAND;
+		String model = Build.MODEL;
+		
 		long time1 = System.currentTimeMillis();
 		Time time = new Time();
 		time.setToNow();

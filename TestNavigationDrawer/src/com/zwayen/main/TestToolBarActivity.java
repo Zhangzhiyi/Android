@@ -9,6 +9,7 @@ import com.zwayen.main.R.id;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -37,6 +38,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 public class TestToolBarActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -56,6 +58,7 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 	private View mHeaderView;
 	private Toolbar mHeaderToolbar;
 	private Button mHeaderButton;
+	private TextView mHeaderText;
 	private HorizontalScrollView mHorizontalScrollView;
 	private LinearLayout mScrollLayout;
 	private LinearLayout mGuideBarLayout;
@@ -64,8 +67,9 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 	private int mCurHeaderTop = 0;
 	private int mCurTabIndex = INDEX_HOME;
 	private int mFirstVisibleItem = -1;
-	
+
 	private LinearLayout contentLayout;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -104,6 +108,16 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 		mHeaderView = LayoutInflater.from(this).inflate(R.layout.view_header_placeholder, null);
 		mHeaderToolbar = (Toolbar) mHeaderView.findViewById(R.id.demo_toolbar);
 		mHeaderButton = (Button) mHeaderView.findViewById(R.id.button1);
+		mHeaderText = (TextView) mHeaderView.findViewById(R.id.textView1);
+		AlphaForegroundColorSpan span = new AlphaForegroundColorSpan(getResources().getColor(android.R.color.white));
+		span.setAlpha(0.5f);
+		SpannableString spannableString = new SpannableString("1212");
+		spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		mHeaderText.setText(spannableString);
+		// 很奇怪对TextView有效果，对Button没效果
+		// mHeaderText.setText(spannableString);
+		// 所以直接设置颜色的透明度，这种方法更简单
+		mHeaderButton.setTextColor(Color.argb(125, 255, 255, 255));
 		mGuideBarParentLayout = (RelativeLayout) mHeaderView.findViewById(id.guidebar_parent);
 		mGuideBarLayout = (LinearLayout) mHeaderView.findViewById(R.id.guidebar_layout);
 		mHorizontalScrollView = (HorizontalScrollView) mHeaderView.findViewById(R.id.horizontalScrollView1);
@@ -153,7 +167,7 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				// TODO Auto-generated method stub
-				if (scrollState == SCROLL_STATE_IDLE && mFirstVisibleItem == 0) {
+				if ((scrollState == SCROLL_STATE_IDLE || scrollState == SCROLL_STATE_FLING) && mFirstVisibleItem == 0) {
 					if (mCurHeaderTop < toolbarHeight) {
 						float fraction = mCurHeaderTop / toolbarHeight;
 						long percent = (long) (500 * fraction);
@@ -227,12 +241,14 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 							});
 						}
 						if (top > toolbarHeight) {
-//							LinearLayout.LayoutParams layoutParams = new LayoutParams(mHorizontalScrollView.getWidth(), mHorizontalScrollView.getHeight());
-							((ViewGroup)mGuideBarLayout.getParent()).removeView(mGuideBarLayout);
-//							mHorizontalScrollView.setLayoutParams(layoutParams);
+							// LinearLayout.LayoutParams layoutParams = new
+							// LayoutParams(mHorizontalScrollView.getWidth(),
+							// mHorizontalScrollView.getHeight());
+							((ViewGroup) mGuideBarLayout.getParent()).removeView(mGuideBarLayout);
+							// mHorizontalScrollView.setLayoutParams(layoutParams);
 							contentLayout.addView(mGuideBarLayout, 0);
 						} else {
-							((ViewGroup)mGuideBarLayout.getParent()).removeView(mGuideBarLayout);
+							((ViewGroup) mGuideBarLayout.getParent()).removeView(mGuideBarLayout);
 							RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(mGuideBarLayout.getWidth(), mGuideBarLayout.getHeight());
 							layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 							layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -265,6 +281,8 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 				valueAnimator.start();
 			}
 		});
+
+		changeSelectBtn(0);
 	}
 
 	@Override
@@ -351,16 +369,16 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 	public void changeSelectBtn(int index) {
 		for (int i = 0; i < mTabButtons.length; i++) {
 			if (i == index) {
-				if (alphaForegroundSelectedColorSpan.getAlpha() == 1) {
-					mTabButtons[i].setText(mTabButtons[i].getText().toString());
-				}
-				mTabButtons[i].setTextColor(getResources().getColor(android.R.color.white));
+				// if (alphaForegroundSelectedColorSpan.getAlpha() == 1) {
+				// mTabButtons[i].setText(mTabButtons[i].getText().toString());
+				// }
+				mTabButtons[i].setTextColor(alphaWhiteColor);
 				mTabButtons[i].setSelected(true);
 			} else {
-				if (alphaForegroundColorSpan.getAlpha() == 1) {
-					mTabButtons[i].setText(mTabButtons[i].getText().toString());
-				}
-				mTabButtons[i].setTextColor(getResources().getColor(R.color.guidebar_btn_text_color));
+				// if (alphaForegroundColorSpan.getAlpha() == 1) {
+				// mTabButtons[i].setText(mTabButtons[i].getText().toString());
+				// }
+				mTabButtons[i].setTextColor(alphaTextColor);
 				mTabButtons[i].setSelected(false);
 			}
 		}
@@ -372,18 +390,24 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 	float guideBarBtnTransitionWidth = 0;
 	float startPaddingTop = 0;
 	float finalPaddingTop = 0;
-	AlphaForegroundColorSpan alphaForegroundColorSpan;
-	AlphaForegroundColorSpan alphaForegroundSelectedColorSpan;
+	// AlphaForegroundColorSpan alphaForegroundColorSpan;
+	// AlphaForegroundColorSpan alphaForegroundSelectedColorSpan;
 	float guideBarRightWidth = 0;
 	float screenWidth;
 	float finalScrollWidth;
 	float toolbarHeight;
-
+	
+	int textColor;
+	int whiteColor;
+	int alphaTextColor;
+	int alphaWhiteColor;
 	void init() {
 		guideBarBtnWidth = getResources().getDimension(R.dimen.guidebar_btn_width);
 		guideBarBtnTransitionWidth = getResources().getDimension(R.dimen.guidebar_btn_transition_width);
-		alphaForegroundColorSpan = new AlphaForegroundColorSpan(getResources().getColor(R.color.guidebar_btn_text_color));
-		alphaForegroundSelectedColorSpan = new AlphaForegroundColorSpan(getResources().getColor(android.R.color.white));
+		// alphaForegroundColorSpan = new
+		// AlphaForegroundColorSpan(getResources().getColor(R.color.guidebar_btn_text_color));
+		// alphaForegroundSelectedColorSpan = new
+		// AlphaForegroundColorSpan(getResources().getColor(android.R.color.white));
 		startPaddingTop = getResources().getDimension(R.dimen.guidebar_btn_paddingTop);
 		finalPaddingTop = getResources().getDimension(R.dimen.guidebar_btn_transition_drawableTop);
 		guideBarRightWidth = getResources().getDimension(R.dimen.guidebar_right_section);
@@ -391,14 +415,21 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 		screenWidth = wm.getDefaultDisplay().getWidth();
 		finalScrollWidth = screenWidth - guideBarRightWidth;
 		toolbarHeight = getResources().getDimension(R.dimen.toolbar_height);
+		
+		textColor = getResources().getColor(R.color.guidebar_btn_text_color);
+		whiteColor = getResources().getColor(android.R.color.white);
+		alphaTextColor = Color.argb(255, (textColor >> 16) & 0xFF, (textColor >> 8) & 0xFF, textColor & 0xFF);
+		alphaWhiteColor = Color.argb(255, (whiteColor >> 16) & 0xFF, (whiteColor >> 8) & 0xFF, whiteColor & 0xFF);
 	}
 
 	public void animationDependFraction(float fraction) {
 
 		float curWidth = guideBarBtnWidth - (guideBarBtnWidth - guideBarBtnTransitionWidth) * fraction;
-		alphaForegroundColorSpan.setAlpha(1 - fraction);
-		alphaForegroundSelectedColorSpan.setAlpha(1 - fraction);
+		// alphaForegroundColorSpan.setAlpha(1 - fraction);
+		// alphaForegroundSelectedColorSpan.setAlpha(1 - fraction);
 
+		alphaTextColor = Color.argb((int) ((1 - fraction) * 255), (textColor >> 16) & 0xFF, (textColor >> 8) & 0xFF, textColor & 0xFF);
+		alphaWhiteColor = Color.argb((int) ((1 - fraction) * 255), (whiteColor >> 16) & 0xFF, (whiteColor >> 8) & 0xFF, whiteColor & 0xFF);
 		float curPaddingTop = startPaddingTop + (finalPaddingTop - startPaddingTop) * fraction;
 
 		float curScrollWidth = screenWidth - (screenWidth - finalScrollWidth) * fraction;
@@ -408,13 +439,20 @@ public class TestToolBarActivity extends ActionBarActivity implements View.OnCli
 			layoutParams.width = (int) curWidth;
 			button.setLayoutParams(layoutParams);
 
-			SpannableString spannableString = new SpannableString(button.getText());
+			// SpannableString spannableString = new
+			// SpannableString(button.getText());
 			if (i == mCurTabIndex) {
-				spannableString.setSpan(alphaForegroundSelectedColorSpan, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+				// spannableString.setSpan(alphaForegroundSelectedColorSpan, 0,
+				// spannableString.length(),
+				// Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+				button.setTextColor(alphaWhiteColor);
 			} else {
-				spannableString.setSpan(alphaForegroundColorSpan, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+				// spannableString.setSpan(alphaForegroundColorSpan, 0,
+				// spannableString.length(),
+				// Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+				button.setTextColor(alphaTextColor);
 			}
-			button.setText(spannableString);
+			// button.setText(spannableString);
 
 			button.setPadding(button.getPaddingLeft(), (int) curPaddingTop, button.getPaddingRight(), button.getPaddingBottom());
 		}

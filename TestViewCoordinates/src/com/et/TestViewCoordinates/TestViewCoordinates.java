@@ -60,7 +60,7 @@ public class TestViewCoordinates extends Activity implements OnClickListener{
 				break;
 			case R.id.button2:
 				Log.i((String) mButton2.getText(), "left:" + mButton2.getLeft() + "," + "top:" + mButton2.getTop());
-				Log.i((String) mButton2.getText(), "" + mButton2.getWidth() + "," + mButton2.getHeight());
+				Log.i((String) mButton2.getText(), "width:" + mButton2.getWidth() + ", height:" + mButton2.getHeight());
 				//获取全局坐标系的一个视图区域，返回一个填充的Rect对象；该Rect是基于总整个屏幕的
 				mButton2.getGlobalVisibleRect(rect);
 				Log.i("getGlobalVisibleRect", "rect:" + rect.toString());
@@ -80,6 +80,7 @@ public class TestViewCoordinates extends Activity implements OnClickListener{
 				Log.i("getLocationInWindow", "left:" + loction[0] + "," + "top:" + loction[1]);
 				mButton2.getLocationOnScreen(loction);
 				Log.i("getLocationOnScreen", "left:" + loction[0] + "," + "top:" + loction[1]);
+				
 				
 				break;
 			case R.id.button3:

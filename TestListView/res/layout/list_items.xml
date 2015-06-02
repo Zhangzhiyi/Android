@@ -29,13 +29,4 @@
 	android:id="@+id/ItemText"
 	/>
 
-<Button
-    android:id="@+id/button1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentTop="true"
-    android:text="Button" 
-    android:focusable="false"/>
-
 </RelativeLayout>

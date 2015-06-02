@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-	android:id="@+id/LinearLayout01" 
-	android:layout_width="fill_parent" 
-	android:layout_height="fill_parent" 
-	xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" 
-	>
-    <Button android:text="跳转" 
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-        android:id="@+id/button1" 
-        android:focusable="false"></Button>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:text="跳转" >
+    </Button>
 
     <FrameLayout
         android:id="@+id/frameLayout1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
-        
-        <ListView 
-            android:layout_width="fill_parent" 
-          android:layout_height="fill_parent" 
-          android:id="@+id/ListView01"
-          android:fadeScrollbars="false" 
-          android:scrollbars="none"/>
+
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ListView
+                android:id="@+id/ListView01"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:fadeScrollbars="false"
+                android:scrollbars="none" />
+        </com.baoyz.widget.PullRefreshLayout>
 
         <LinearLayout
             android:id="@+id/popupmenu1"
             android:layout_width="fill_parent"
             android:layout_height="50dip"
-            android:layout_gravity="top" 
+            android:layout_gravity="top"
             android:background="@android:color/darker_gray"
-            android:visibility="gone">
+            android:visibility="gone" >
         </LinearLayout>
-		<LinearLayout
+
+        <LinearLayout
             android:id="@+id/popupmenu2"
             android:layout_width="fill_parent"
             android:layout_height="50dip"
@@ -40,4 +49,5 @@
             android:visibility="gone" >
         </LinearLayout>
     </FrameLayout>
+
 </LinearLayout>

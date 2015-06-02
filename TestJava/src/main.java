@@ -7,7 +7,11 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
+		int x=1, y=2, z=3;
+		y+=z--/++x;
+		
+		
 		Data data = new Data(0, "0");
 		Data data1 = new Data(1, "1");
 		ArrayList<Data> list = new ArrayList<Data>();

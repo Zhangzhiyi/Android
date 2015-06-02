@@ -2,4 +2,15 @@
 <resources>
     <string name="hello">Hello World, TestListView!</string>
     <string name="app_name">TestListView</string>
+    
+    <string name="pull_to_refresh">Pull down to refresh…</string>
+	<string name="release_to_refresh">Release to refresh…</string>
+	<string name="refreshing">Loading…</string>
+    
+    <integer-array name="google_colors">
+        <item>@color/red</item>
+        <item>@color/blue</item>
+        <item>@color/yellow</item>
+        <item>@color/green</item>
+    </integer-array>
 </resources>

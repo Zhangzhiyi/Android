@@ -30,6 +30,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.ViewFlipper;
 
+import com.baoyz.widget.PullRefreshLayout;
+import com.baoyz.widget.PullRefreshLayout.OnRefreshListener;
+
 public class TestListView extends Activity implements OnTouchListener, OnGestureListener{
 	private Button mButton;
 	private ListView mListView;
@@ -47,6 +50,8 @@ public class TestListView extends Activity implements OnTouchListener, OnGesture
 	
 	private LinearLayout popupMenu1;
 	private LinearLayout popupMenu2;
+	
+	private PullRefreshLayout mPullRefreshLayout;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +90,8 @@ public class TestListView extends Activity implements OnTouchListener, OnGesture
 			}
 		});
         mFlipper.setDisplayedChild(0);
-        mListView.addHeaderView(headView, null, false);
+//        mListView.addHeaderView(headView, null, false);
 //        mListView.setEnabled(false);
-        mListView.setSelector(R.drawable.listitem_selector);
         //生成动态数组，加入数据
         ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();
         for(int i=0;i<40;i++)
@@ -212,6 +216,21 @@ public class TestListView extends Activity implements OnTouchListener, OnGesture
 				if (mListView.getChildAt(0) != null) {
 					Log.i("mListView.getChildAt(0).getTop()", String.valueOf(mListView.getChildAt(0).getTop()));
 				}
+			}
+		});
+        
+        mPullRefreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        mPullRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+			
+			@Override
+			public void onRefresh() {
+				// TODO Auto-generated method stub
+				mPullRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                    	mPullRefreshLayout.setRefreshing(false);
+                    }
+                }, 2000);
 			}
 		});
     }
