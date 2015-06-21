@@ -1,0 +1,111 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.wayen.testgradle"
+        minSdkVersion 10
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "SERVER_URL", '"www.google.com"'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            buildConfigField("String", "SERVER_URL", "WWW.GOOGEL.COM")
+        }
+    }
+    sourceSets {
+        google {
+            java {
+                //¹ýÂËÎÄ¼þ
+                exclude 'com/wayen/testgradle/Filter.java'
+            }
+        }
+    }
+    productFlavors {
+        google {
+        }
+        apple {
+        }
+        facebook {
+            applicationId "com.test.fb.example"
+        }
+    }
+
+    task hello {
+        println "Hello World, Gradle!";
+    }
+
+    hello << {
+        println "Hello World, Last!";
+    }
+    hello.doFirst {
+        println "Hello World, First!";
+    }
+    hello.doLast {
+        println "Hello World, Last2!";
+    }
+
+    task intro(dependsOn: hello) {
+        println "I' am Gradle"
+    }
+    intro.doFirst {
+        println "I' am Gradle, First"
+    }
+    task shellCmd(type: Exec) {
+        workingDir '.'
+
+        commandLine 'cmd', '/c', 'dir'
+
+        //store the output instead of printing to the console:
+        standardOutput = new ByteArrayOutputStream()
+
+        //extension method stopTomcat.output() can be used to obtain the output:
+        ext.output = {
+            return standardOutput.toString()
+        }
+    }
+
+    task call << {
+        println "${versionName}"
+        println "${versionCode}"
+
+    }
+    task depends(dependsOn: assembleGoogle) << {
+
+        println "task call";
+
+        println "finish"
+    }
+
+    task release << {
+
+    }
+
+    android.applicationVariants.all{ variant ->
+
+        variant.mergeAssets.doLast{
+            println "=================variant.mergeAssets.doLast=================="
+        }
+        println "android.applicationVariants.all: " + variant.name;
+
+        variant.outputs.each { output ->
+            if(variant.buildType.name.equals('release')){
+                def outputFile = output.outputFile
+                println outputFile.name
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    facebookCompile 'com.facebook.android:facebook-android-sdk:4.1.0'
+}
