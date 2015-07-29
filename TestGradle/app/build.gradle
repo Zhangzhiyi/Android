@@ -10,12 +10,15 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
     }
     buildTypes {
         debug {
+            println "======debug======"
             buildConfigField "String", "SERVER_URL", '"www.google.com"'
         }
         release {
+            println "======release======"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //            buildConfigField("String", "SERVER_URL", "WWW.GOOGEL.COM")
@@ -24,7 +27,6 @@ android {
     sourceSets {
         google {
             java {
-                //¹ýÂËÎÄ¼þ
                 exclude 'com/wayen/testgradle/Filter.java'
             }
         }
@@ -51,6 +53,7 @@ android {
     }
     hello.doLast {
         println "Hello World, Last2!";
+
     }
 
     task intro(dependsOn: hello) {
@@ -59,11 +62,11 @@ android {
     intro.doFirst {
         println "I' am Gradle, First"
     }
-    task shellCmd(type: Exec) {
+    task shellCmd(type: Exec) << {
+        println "shellCmd start"
         workingDir '.'
 
         commandLine 'cmd', '/c', 'dir'
-
         //store the output instead of printing to the console:
         standardOutput = new ByteArrayOutputStream()
 
@@ -71,11 +74,22 @@ android {
         ext.output = {
             return standardOutput.toString()
         }
-    }
 
-    task call << {
+    }
+    task readProperty << {
         println "${versionName}"
         println "${versionCode}"
+//        executeCmd("cmd.exe /c dir", null, "../");
+    }
+
+    task loop << {
+        for (int i=0; i < 3; i ++)
+        {
+            project.tasks.create("keyi" + i).doLast {
+                println "I' am Gradle, keyi"
+            }
+            project.getTasks().getByName("keyi" + i).execute()
+        }
 
     }
     task depends(dependsOn: assembleGoogle) << {
@@ -86,26 +100,178 @@ android {
     }
 
     task release << {
-
+        assembleFacebookDebug.execute()
+        println "finish"
     }
 
-    android.applicationVariants.all{ variant ->
+    task apktoolDecode << {
+        println "=====apktoolDecode===="
+        String commandStr = "cmd.exe /c apktool.bat d -r -s -o " + apktoolDecodeDir + " " + apkPath;
+        executeCmd(commandStr, null, "${buildDir}/../../");
+    }
 
-        variant.mergeAssets.doLast{
-            println "=================variant.mergeAssets.doLast=================="
+    task apktoolEncode << {
+        String commandStr = "cmd.exe /c apktool.bat b " + apktoolDecodeDir + " -o " + encodeApkPath
+        executeCmd(commandStr, null, "${buildDir}/../../");
+    }
+
+    task jarSignerApk << {
+        String commandStr = "cmd.exe /c jarsigner -sigalg SHA1withRSA -digestalg SHA1 -keystore " + "${buildDir}/../../appsmarket.keystore" + " -storepass nineapps2014 " + encodeApkPath + " android.market -keypass nineapps2014";
+        executeCmd(commandStr, null, ".");
+    }
+
+    task unzipApk << {
+        File unzipDirFile = new File(unzipDir)
+        if (unzipDirFile.exists()) {
+            unzipDirFile.delete()
         }
-        println "android.applicationVariants.all: " + variant.name;
+        println "è§£åŽ‹dexä¸­";
+        String commandStr = "cmd.exe /c unzip -o " + encodeApkPath + " -d " + unzipDir;
+        executeCmd(commandStr, null, "${buildDir}/../../kzip");
 
-        variant.outputs.each { output ->
-            if(variant.buildType.name.equals('release')){
-                def outputFile = output.outputFile
-                println outputFile.name
+        File encodeApkFile = new File(encodeApkPath)
+        if (encodeApkFile.exists()) {
+            encodeApkFile.delete()
+        }
+
+        println "kzip APk dexä¸­";
+        commandStr = "cmd.exe /c cd " + unzipDirFile;
+        executeCmd(commandStr, null, ".");
+        commandStr = "cmd.exe /c kzip /r " + encodeApkPath;
+        executeCmd(commandStr, null, "${buildDir}/../../kzip");
+    }
+
+    task optPng << {
+        String commandStr = "cmd.exe /c pngopt.bat " + apktoolDecodeDir;
+        executeCmd(commandStr, null, "../pngopt");
+
+        println "optPng ending"
+    }
+
+    task forChannel << {
+
+        String chanelStr = "1";
+
+        if (type.equals("1")) {
+            chanelStr = "${union_channels}";
+        }
+        if (type.equals("2")) {
+            chanelStr = "${preInstall_channels}";
+        }
+        if (type.equals("3")) {
+            chanelStr = "${805 UM_channels}";
+        }
+        if (type.equals("4")) {
+            chanelStr = "${gp_channels}";
+        }
+
+        String[] temp = chanelStr.split(",");
+        for (int i = 0; i < temp.length; i++) {
+            File channelFile = new File(deCodePath + "/assets/bid.txt")
+            println channelFile.getPath();
+            if (channelFile.exists()) {
+                channelFile.write(temp[i], 'UTF-8')
+            }
+
+            String pulishApkName = "9Apps_" + temp[i] + "_${versionname}_${versioncode}" + ".apk"
+            commandStr = "cmd.exe /c zipalign -v -f 4 " + encodeApkPath + " " + pulishApkName;
+            executeCmd(commandStr, null, ".");
+
+            encodeApkFile = new File(encodeApkPath)
+            if (encodeApkFile.exists()) {
+                encodeApkFile.delete()
             }
         }
     }
+
+    ext {
+        flavor = "facebook"
+        publishDir = "${buildDir}\\public"
+        apktoolDecodeDir = publishDir + "\\" + project.name
+        apkPath = publishDir + "\\" + project.name + ".apk"
+        encodeApkPath = publishDir + "\\" + project.name + "_temp.apk"
+        unzipDir = publishDir + "\\" + "unzip"
+    }
+
+    task publish() {
+        flavor = "facebook"
+    }
+
+    android.applicationVariants.all { variant ->
+
+        println "android.applicationVariants.all: " + variant.name;
+        def buildType = variant.buildType
+
+
+        println "variant.assemble.name:" + variant.assemble.name
+        variant.outputs.each { output ->
+            if (variant.buildType.name.equals('release')) {
+                println "======flavor:========" + flavor
+                if (variant.productFlavors[0].name.equals(new String(flavor))) {
+                    println "=================variant.productFlavors.name==================:" + variant.productFlavors.name
+                    def copyTask = project.tasks.create("copy${variant.name}Apk", Copy)
+                    copyTask.from(output.outputFile)
+                    copyTask.into(publishDir)
+                    copyTask.rename(output.outputFile.name, project.name + ".apk")
+                    copyTask.dependsOn variant.assemble
+                    publish.dependsOn copyTask
+                }
+            }
+        }
+    }
+
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    facebookCompile 'com.facebook.android:facebook-android-sdk:4.1.0'
+    facebookCompile 'com.facebook.android:facebook-android-sdk:4.4.0'
+    googleCompile 'com.facebook.android:facebook-android-sdk:4.1.0'
+}
+
+
+def executeCmd(cmd, arg, path) {
+    println(cmd);
+    File file = new File(path);
+    println(file.getAbsolutePath())
+    Process process = Runtime.getRuntime().exec(cmd, arg, file);
+    new Thread(new Runnable() {
+        @Override
+        void run() {
+            String lineStr = "";
+            println "===============getErrorStream================="
+            InputStream errorStream = process.getErrorStream()
+            if (errorStream != null ) {
+                BufferedReader errorBr = new BufferedReader(new InputStreamReader(errorStream))
+                while ((lineStr = errorBr.readLine()) != null) {
+                    System.out.println(lineStr)
+                }
+                errorStream.close()
+                errorBr.close()
+            }
+        }
+    }).start()
+
+    new Thread(new Runnable() {
+        @Override
+        void run() {
+            String lineStr = "";
+            println "===============getInputStream================="
+            InputStream inputStream = process.getInputStream()
+            println "inputStream available:" + inputStream.available()
+            if (inputStream != null ) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))
+
+                while ((lineStr = br.readLine()) != null) {
+                    System.out.println(lineStr)
+                }
+
+                inputStream.close()
+                br.close()
+            }
+        }
+    }).start()
+
+
+    int exitValue = process.waitFor();
+    println "exitValue:" + exitValue
 }
