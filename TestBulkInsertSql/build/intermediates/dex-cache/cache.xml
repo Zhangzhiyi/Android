@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="D:\GitHub\Android\TestBulkInsertSql\libs\android-support-v4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="bd6479f5dd592790607e0504e66e0f31c2b4d308">
+        <dex dex="D:\GitHub\Android\TestBulkInsertSql\build\intermediates\pre-dexed\debug\android-support-v4_47c2f86eaabd7096ac9f3a549417a5081146617c.jar" />
+    </item>
+
+</items>

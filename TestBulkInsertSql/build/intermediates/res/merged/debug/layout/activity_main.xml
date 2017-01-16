@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bulk Insert Demonstration" />
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Standard Insert" 
+        android:id="@+id/standard_insert_button"/>
+
+    <Button
+        android:id="@+id/trasition_insert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="trasition_insert" />
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sqlstatement  Insert" 
+        android:id="@+id/sqlstatement_insert_button"/>
+
+    <Button
+        android:id="@+id/sqlstatement_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sqlstatement update" />
+    
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Execution Time: xxx" 
+        android:id="@+id/exec_time_label"/>
+
+</LinearLayout>
