@@ -20,6 +20,7 @@ android {
 
     lintOptions {
         abortOnError false
+        checkReleaseBuilds true
     }
 
 }
@@ -33,4 +34,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile project(':customrule_aar')
+}
+
+task Hello {
+    doLast {
+        println("Hello World!")
+    }
 }

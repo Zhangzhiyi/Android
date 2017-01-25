@@ -62,7 +62,7 @@ public class LogDetector extends Detector implements Detector.JavaScanner{
                     JavaParser.ResolvedClass containingClass = method.getContainingClass();
                     if (containingClass.matches("android.util.Log")) {
                         context.report(ISSUE, node, context.getLocation(node),
-                                "Don't use Log");
+                                "Don't use Log!!!");
                         return true;
                     }
                 }
