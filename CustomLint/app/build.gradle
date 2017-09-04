@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.nineapps.customlint"
         minSdkVersion 10
@@ -15,6 +15,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        edc {
+            debuggable true
         }
     }
 
@@ -34,7 +38,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
 
-    compile project(':customrule_aar')
+    debugCompile project(':customrule_aar')
 }
 
 task Hello {

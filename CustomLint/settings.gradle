@@ -1,1 +1,1 @@
-include ':app', ':customrule', ':customrule_aar'
+include ':app', ':customrule', ':customrule_aar', ':mylibrary'

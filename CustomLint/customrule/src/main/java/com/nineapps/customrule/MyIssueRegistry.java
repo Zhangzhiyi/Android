@@ -15,8 +15,12 @@ public class MyIssueRegistry extends IssueRegistry {
     @Override
     public List<Issue> getIssues() {
         return Arrays.asList(
-                LogDetector.ISSUE,
-                ConstantNameDetector.ISSUE
+                LogPsiDetector.ISSUE,
+                ConstantNameDetector.ISSUE,
+                GradleVersionDetector.ISSUE,
+                MessageObtainPsiDetector.ISSUE,
+                ClassUseDetector.TIMER_ISSUE,
+                CheckNullPointPsiDetector.ISSUE
         );
     }
 }
