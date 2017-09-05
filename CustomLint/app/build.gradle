@@ -44,5 +44,17 @@ dependencies {
 task Hello {
     doLast {
         println("Hello World!")
+        parseXml()
     }
+}
+
+def parseXml(){
+    def xml = new XmlSlurper()
+    def file = new File("lint.xml")
+    if (file.exists()) {
+        println "xml文件存在"
+        def result = xml.parse(file)
+        print result.issue*.@id
+    }
+
 }

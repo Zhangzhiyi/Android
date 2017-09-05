@@ -31,7 +31,7 @@ public class LogPsiDetector extends Detector implements Detector.JavaPsiScanner 
     public static final Issue ISSUE = Issue.create(
             "LogUse",
             "Please don't use Log/System.out.println",
-            "Use LogUtil avoid to print debug info",
+            "Debug info should not print in the console",
             Category.SECURITY, 5, Severity.ERROR,
             IMPLEMENTATION);
 
@@ -51,9 +51,11 @@ public class LogPsiDetector extends Detector implements Detector.JavaPsiScanner 
     public void visitMethod(JavaContext context, JavaElementVisitor visitor, PsiMethodCallExpression call, PsiMethod method) {
         super.visitMethod(context, visitor, call, method);
         JavaEvaluator evaluator = context.getEvaluator();
-        if (!evaluator.isMemberInClass(method, LOG_CLS) || !evaluator.isMemberInClass(method, SYSTEM_CLS)) {
+        if (!evaluator.isMemberInClass(method, LOG_CLS) && !evaluator.isMemberInClass(method, SYSTEM_CLS)) {
             return;
         }
+
+        context.report(ISSUE, context.getLocation(call), "Use LogUtil avoid to print debug info");
     }
 
 }
