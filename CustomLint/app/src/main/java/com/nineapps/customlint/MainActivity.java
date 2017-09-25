@@ -1,13 +1,13 @@
 package com.nineapps.customlint;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.util.Timer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

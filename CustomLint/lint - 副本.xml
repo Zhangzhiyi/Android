@@ -23,5 +23,6 @@
                 <ignore path="src/main/java/com/nineapps/customlint/MainActivity.java" />
                 <ignore path="src/main/AndroidManifest.xml" />
                 <ignore path="src/main/res/layout/activity_main.xml" />
+                <ignore path="build.gradle" />
     </issue> -->
 </lint>

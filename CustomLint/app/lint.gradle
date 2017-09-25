@@ -1,0 +1,162 @@
+import org.w3c.dom.Document
+import org.w3c.dom.Element
+import org.xml.sax.SAXException
+
+import javax.xml.parsers.DocumentBuilder
+import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.parsers.ParserConfigurationException
+import javax.xml.transform.TransformerException
+import javax.xml.transform.TransformerFactory
+import javax.xml.transform.dom.DOMSource
+import javax.xml.transform.stream.StreamResult
+
+task excuteIncrementLint {
+    doLast {
+        println("excuteIncrementLint!")
+//        parseXml()
+        javaParseXml()
+        project.tasks.getByName("lint").execute()
+    }
+}
+
+ext {
+    projectDir = getProjectDir()
+    rootName = "CustomLint"
+    projectName = "app"
+    println "projectDir:" + projectDir
+}
+
+def parseXml() {
+    def xml = new XmlParser()
+    def file = new File("lint.xml")
+    if (file.exists()) {
+        println "xml文件存在"
+        def result = xml.parse(file)
+        print result.issue*.@id;
+        def newNode = new Node(null, "property", [name: "foo", value: "bar"])
+        result.appendNode(newNode)
+        def issues = result.issues
+        issues.each {
+            issue ->
+                issue.@id = 'N'
+                issue.appendNode('foo', [name: 'bar'])
+        }
+//        result.appendNode('issue', [id:"all"], )
+
+        // 增加sheet节点，同时设置sheet的属性index和caption
+//        excel.appendNode('sheet', [index: "1", caption:""], )
+    }
+}
+
+def List<String> javaParseAffect() {
+    File affectFile = new File("affect.txt");
+    if (affectFile != null && affectFile.exists()) {
+        String str = getFileContent(new FileInputStream(affectFile));
+        println "affect.txt =>" + str;
+        String[] split = str.split("\n");
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < split.length; i++) {
+            if (split[i].contains(ext.rootName + File.separator + ext.projectName)) {
+                list.add(split[i]);
+            }
+        }
+        println "list size:" + list.size();
+        return list;
+    }
+
+
+}
+
+def javaParseXml() {
+    List<String> list = javaParseAffect()
+    if (list.isEmpty()) {
+        return;
+    }
+    File lintFile = new File("lint.xml")
+    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder dBuilder;
+
+    try {
+        dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(lintFile);
+        doc.getDocumentElement().normalize();
+
+        Element lint = doc.getDocumentElement();
+        Element issue = doc.createElement("issue");
+        issue.setAttribute("id", "all");
+
+        File appFile = new File(projectName);
+        if (appFile.exists()) {
+            traverseFolder(appFile, doc, issue, list);
+            lint.appendChild(issue);
+        } else {
+            return;
+        }
+
+        //write the updated document to file or console
+        doc.getDocumentElement().normalize();
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        javax.xml.transform.Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File("lint.xml"));
+        transformer.setOutputProperty(javax.xml.transform.OutputKeys.INDENT, "yes");
+        transformer.transform(source, result);
+        System.out.println("XML file updated successfully");
+
+    } catch (SAXException | ParserConfigurationException | IOException | TransformerException e1) {
+        e1.printStackTrace();
+    }
+}
+
+def addElement(String filePath, Document doc, Element issue) {
+    Element ingore = doc.createElement("ignore");
+    String str = new String(ext.projectName)
+    filePath = filePath.substring(str.length() + 1)
+    ingore.setAttribute("path", filePath);
+    issue.appendChild(ingore);
+}
+
+def traverseFolder(File root, Document doc, Element issue, List<String> list) {
+    if (root.isDirectory()) {
+        File[] listFile = root.listFiles();
+        if (listFile != null) {
+            for (File file : listFile) {
+                if (file.isDirectory() && !file.getPath().contains(ext.projectName + File.separator + "build" + File.separator) ) {
+                    traverseFolder(file, doc, issue, list);
+                } else {
+                    System.out.println(file.getPath());
+                    if (!isContains(file.getPath(), list)) {
+                        addElement(file.getPath(), doc, issue);
+                    }
+                }
+            }
+        }
+    } else {
+        System.out.println(root.getPath());
+        if (!isContains(file.getPath(), list)) {
+            addElement(file.getPath(), doc, issue);
+        }
+    }
+}
+
+def String getFileContent(
+        FileInputStream fis) throws IOException {
+    BufferedReader br =
+            new BufferedReader(new InputStreamReader(fis))
+    StringBuilder sb = new StringBuilder();
+    String line;
+    while ((line = br.readLine()) != null) {
+        sb.append(line);
+        sb.append("\n");
+    }
+    return sb.toString();
+}
+
+def boolean isContains(String path, List<String> list){
+    for (String item : list) {
+        if (item.contains(path)){
+            return true;
+        }
+    }
+    return false;
+}

@@ -1,23 +1,12 @@
-import org.w3c.dom.Document
-import org.w3c.dom.Element
-import org.xml.sax.SAXException
-
-import javax.xml.parsers.DocumentBuilder
-import javax.xml.parsers.DocumentBuilderFactory
-import javax.xml.parsers.ParserConfigurationException
-import javax.xml.transform.TransformerException
-import javax.xml.transform.TransformerFactory
-import javax.xml.transform.dom.DOMSource
-import javax.xml.transform.stream.StreamResult
-
 apply plugin: 'com.android.application'
+apply from: 'lint.gradle'
 
 android {
     compileSdkVersion 24
     buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.nineapps.customlint"
-        minSdkVersion 10
+        minSdkVersion 14
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -43,104 +32,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
-
-    debugCompile project(':customrule_aar')
-}
-
-task Hello {
-    doLast {
-        println("Hello World!")
-//        parseXml()
-        javaParseXml()
-    }
-}
-
-def parseXml() {
-    def xml = new XmlParser()
-    def file = new File("lint.xml")
-    if (file.exists()) {
-        println "xml文件存在"
-        def result = xml.parse(file)
-        print result.issue*.@id;
-        def newNode = new Node(null, "property", [name: "foo", value: "bar"])
-        result.appendNode(newNode)
-        def issues = result.issues
-        issues.each {
-            issue ->
-                issue.@id = 'N'
-                issue.appendNode('foo', [name: 'bar'])
-        }
-//        result.appendNode('issue', [id:"all"], )
-
-        // 增加sheet节点，同时设置sheet的属性index和caption
-//        excel.appendNode('sheet', [index: "1", caption:""], )
-    }
-}
-
-void javaParseXml() {
-    File file = new File("lint.xml")
-    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder dBuilder;
-
-    try {
-        dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(file);
-        doc.getDocumentElement().normalize();
-
-        Element lint = doc.getDocumentElement();
-        Element issue = doc.createElement("issue");
-        issue.setAttribute("id", "all");
-
-        File appFile = new File("app");
-        if (appFile.exists()) {
-            traverseFolder(appFile, doc, issue);
-            lint.appendChild(issue);
-        } else {
-            return;
-        }
-
-        //write the updated document to file or console
-        doc.getDocumentElement().normalize();
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        javax.xml.transform.Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File("lint.xml"));
-        transformer.setOutputProperty(javax.xml.transform.OutputKeys.INDENT, "yes");
-        transformer.transform(source, result);
-        System.out.println("XML file updated successfully");
-
-    } catch (SAXException | ParserConfigurationException | IOException | TransformerException e1) {
-        e1.printStackTrace();
-    }
-}
-
-def addElement(String filePath, Document doc, Element issue) {
-    Element ingore = doc.createElement("ignore");
-    ingore.setAttribute("path", filePath);
-    issue.appendChild(ingore);
-}
-
-def traverseFolder(File root, Document doc, Element issue) {
-    if (root.isDirectory()) {
-        File[] listFile = root.listFiles();
-        if (listFile != null) {
-            for (File file : listFile) {
-                if (file.isDirectory()) {
-                    traverseFolder(file, doc, issue);
-                } else {
-                    System.out.println(file.getAbsolutePath());
-                    addElement(file.getAbsolutePath(), doc, issue);
-                }
-            }
-        }
-    } else {
-        System.out.println(root.getAbsolutePath());
-        addElement(file.getAbsolutePath(), doc, issue);
-    }
+    compile project(':customrule_aar')
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:support-annotations:26.1.0'
 }
