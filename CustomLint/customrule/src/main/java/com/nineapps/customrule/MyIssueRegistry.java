@@ -20,7 +20,8 @@ public class MyIssueRegistry extends IssueRegistry {
                 GradleVersionDetector.ISSUE,
                 MessageObtainPsiDetector.ISSUE,
                 ClassUseDetector.TIMER_ISSUE,
-                CheckNullPointPsiDetector.ISSUE
+                CheckNullPointPsiDetector.ISSUE,
+                EnumDetector.ISSUE
         );
     }
 }

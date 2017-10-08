@@ -38,4 +38,12 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
     }
+
+
+    public enum Light{
+        RED,
+        GREEN,
+        YELLOW
+    }
+
 }
